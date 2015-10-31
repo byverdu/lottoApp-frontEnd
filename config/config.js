@@ -6,28 +6,28 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'lottoapp-front-end'
+      name: 'lottoApp-front-end'
     },
     port: 3000,
-    db: 'mongodb://localhost/lottoapp'
+    db: 'mongodb://localhost/lottoApp'
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'lottoapp-front-end'
+      name: 'lottoApp-front-end'
     },
     port: 3000,
-    db: 'mongodb://localhost/lottoapp'
+    db: 'mongodb://localhost/lottoApp'
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'lottoapp-front-end'
+      name: 'lottoApp-front-end'
     },
     port: 3000,
-    db: 'mongodb://localhost/lottoapp'
+    db: 'mongodb://localhost/lottoApp'
   }
 };
 

@@ -1,7 +1,8 @@
 // Example model
+'use strict';
 
-var mongoose = require('mongoose'),
-let LottoSchema = mongoose.Schema({
+let mongoose = require('mongoose'),
+  LottoSchema = mongoose.Schema({
 
   lottoID: String,
   date: String,
@@ -17,10 +18,10 @@ let LottoSchema = mongoose.Schema({
     statistics: Array
   }
 });
-
-LottoSchema.virtual('date')
-  .get(function(){
-    return this._id.getTimestamp();
-  });
+//
+// LottoSchema.virtual('date')
+//   .get(function(){
+//     return this._id.getTimestamp();
+//   });
 
 mongoose.model('Lotto', LottoSchema);
