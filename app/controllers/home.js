@@ -1,6 +1,6 @@
 'use strict';
 
-var express = require('express'),
+let express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
   Lotto = mongoose.model('Lotto');
@@ -19,16 +19,16 @@ Lotto.find(function(err, lotto) {
 });
 
 router.get('/', function (req, res, next) {
-  Lotto.find(function (err, articles) {
+  Lotto.find(function (err, lottos) {
     if (err) {return next(err);}
 
-    articles.forEach((el)=>{
+    lottos.forEach((el)=>{
       console.log(el.lottoID);
     });
 
     res.render('index', {
       title: 'Generator-Express MVC',
-      articles: articles
+      lottos: lottos
     });
   });
 });
