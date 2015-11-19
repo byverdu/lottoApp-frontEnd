@@ -14,3 +14,7 @@ exports.getIndex = (req, res, next) => {
     }
   });
 };
+
+exports.dashboard = function (req, res) {
+    console.log(req.params.id);
+};
