@@ -6,8 +6,8 @@ let mongoose = require('mongoose'),
 
   lottoID: String,
   date: String,
-  extras: String,
   lastResult: String,
+  extras: String,
   mostRepeated: String,
   statistics: Array,
   allResults: Array,
@@ -18,10 +18,13 @@ let mongoose = require('mongoose'),
     statistics: Array
   }
 });
-//
-// LottoSchema.virtual('date')
-//   .get(function(){
-//     return this._id.getTimestamp();
-//   });
 
-mongoose.model('Lotto', LottoSchema);
+LottoSchema.methods.getLottoID = function() {
+  return this.lottoID;
+};
+
+LottoSchema.methods.getLastDate = function() {
+  return this.date;
+};
+
+module.exports = mongoose.model('Lotto', LottoSchema);
