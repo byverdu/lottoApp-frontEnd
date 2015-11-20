@@ -2,21 +2,15 @@
 
 let express = require('express'),
   router = express.Router(),
-  homeController = require('../controllerLogic/home');
+  pathRouting = require('./pathRouting/pathRouting');
 
 module.exports = function (app) {
   app.use('/', router);
 };
 
 // Routes for index
-router.get('/', homeController.getIndex);
-router.post('/', (req, res) => {
-  let stringLottoID = Object.getOwnPropertyNames(req.body).toString();
-
-  res.redirect(`/lotto/?lottoID=${stringLottoID}`);
-});
+router.get('/', pathRouting.findLottoID);
+router.post('/', pathRouting.postQueryToLotto);
 
 // routes for lotto
-router.get('/lotto', (req, res) => {
-  res.render('lotto', {title: req.query.lottoID});
-});
+router.get('/lotto', pathRouting.getLottoPage);

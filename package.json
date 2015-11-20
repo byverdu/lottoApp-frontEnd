@@ -6,7 +6,8 @@
   "scripts": {
     "start": "babel-node server",
     "nodemon": "nodemon -e js,json,jsx --exec babel-node server",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "testhelp": "mocha --compilers js:babel-core/register test/helperSpec"
   },
   "dependencies": {
     "babel": "^6.0.14",

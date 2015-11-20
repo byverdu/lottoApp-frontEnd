@@ -1,8 +1,9 @@
 // Example model
 'use strict';
 
-let mongoose = require('mongoose'),
-  LottoSchema = mongoose.Schema({
+import mongoose from 'mongoose';
+
+let LottoSchema = mongoose.Schema({
 
   lottoID: String,
   date: String,
