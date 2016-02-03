@@ -1,24 +1,18 @@
 'use strict';
+let express = require( 'express' );
+let path = require( 'path' );
+let routes = require( './public/routes/index');
 
-let express = require('express'),
-  config = require('./config/config'),
-  glob = require('glob'),
-  mongoose = require('mongoose');
+let app  = express();
 
-mongoose.connect(config.db);
-let db = mongoose.connection;
-db.on('error', function () {
-  throw new Error('unable to connect to database at ' + config.db);
+app.set( 'views', path.join( __dirname, 'views' ) );
+app.set( 'view engine', 'jade');
+
+app.use( express.static( path.join( __dirname, 'public' ) ) );
+app.use( '/', routes );
+
+app.listen(9393, function(){
+    console.log('Server details', this.address());
 });
 
-let models = glob.sync(config.root + '/app/models/*.js');
-models.forEach(function (model) {
-  require(model);
-});
-let app = express();
-
-require('./config/express')(app, config);
-
-app.listen(config.port, function () {
-  console.log('Express server listening on port ' + config.port);
-});
+module.exports = app;
