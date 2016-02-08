@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "babel-node server.js",
-    "nodemon": "nodemon -e js,jsx --exec babel-node server.js",
-    "watchify": "watchify -t [ babelify --presets [ react es2015] ] public/main.jsx -o public/dist/bundle.js"
+    "nodemon": "nodemon -e js,jsx --exec babel-node index.js",
+    "watchify": "watchify -t [ babelify --presets [ react es2015] ] src/main.jsx -o public/bundle.js"
   },
   "repository": {
     "type": "git",

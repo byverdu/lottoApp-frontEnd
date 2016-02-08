@@ -1,7 +1,7 @@
 'use strict';
 let express = require( 'express' );
 let path = require( 'path' );
-let routes = require( './public/routes/index');
+let routes = require( './routes/index');
 
 let app  = express();
 
@@ -10,9 +10,5 @@ app.set( 'view engine', 'jade');
 
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( '/', routes );
-
-app.listen(9393, function(){
-    console.log('Server details', this.address());
-});
 
 module.exports = app;
