@@ -1,11 +1,14 @@
 'use strict';
 
 import React from 'react';
+import { Router } from 'react-router';
+import {createHashHistory} from 'history/lib/createBrowserHistory';
 import { render } from 'react-dom';
-import App from './container/App.jsx';
+import routes from './routes.jsx';
 
 let rootElement = document.getElementById( 'reactOutput' );
 
+
 render(
-  <App />, rootElement
+  <Router routes={ routes } history={ createHashHistory }></Router>, rootElement
 );
