@@ -3,6 +3,9 @@
 const express = require( 'express' );
 // import App from '../container/App';
 import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { match, RoutingContext } from 'react-router';
+import routes from '../routes.jsx';
 // import ReactDOMServer from 'react-dom/server';
 let router = express.Router();
 //
@@ -19,11 +22,6 @@ let router = express.Router();
 // });
 //
 
-function renderApp(props, res) {
-  const markup = renderToString(<RoutingContext {...props}/>);
-  const html = createPage(markup);
-  res.send(html);
-}
 
 function createPage(html) {
   return `
@@ -41,9 +39,14 @@ function createPage(html) {
   `;
 }
 
-import { renderToString } from 'react-dom/server';
-import { match, RoutingContext } from 'react-router';
-import routes from '../routes.jsx';
+function renderApp(props, res) {
+  const markup = renderToString(<RoutingContext {...props}/>);
+  // const html = createPage(markup);
+  // res.send(html);
+  res.status(200).render( 'index', {title: 'lottoApp', reactOutput: markup});
+}
+
+
 
 router.get('*', function(req, res) {
   // Note that req.url here should be the full URL path from

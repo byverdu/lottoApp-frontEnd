@@ -4,7 +4,9 @@
 import React from 'react';
 import { Route } from 'react-router';
 import App from './container/App.jsx';
-import { About, Inbox } from './compenents/test.jsx';
+import  About from './compenents/About.jsx';
+import { Inbox } from './compenents/Inbox.jsx';
+
 
 module.exports = [
     <Route path={ '/' } component={ App }>

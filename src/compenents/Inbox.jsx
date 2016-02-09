@@ -2,13 +2,7 @@
 
 import React from 'react';
 
-class About extends React.Component {
-  render() {
-    return <h3>About</h3>;
-    }
-}
-
-class Inbox extends React.Component {
+export default class Inbox extends React.Component {
   render(){
     return (
       <div>
@@ -18,5 +12,3 @@ class Inbox extends React.Component {
     );
   }
 }
-
-export default { About, Inbox };
