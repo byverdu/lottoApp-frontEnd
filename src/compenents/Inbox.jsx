@@ -1,22 +1,14 @@
+'use strict';
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
-export default class Inbox extends Component {
-
-  componentWillMount() {
-    console.log( 'Inbox jsx Component' );
-  }
-
-  render() {
+export default class Inbox extends React.Component {
+  render(){
     return (
       <div>
-        <h2>{this.props.lotto.messages.infoScreen}</h2>
+        <h2>Inbox</h2>
         "Welcome to your Inbox"
       </div>
     );
   }
 }
-
-Inbox.propTypes = {
-  lotto: PropTypes.object
-};
