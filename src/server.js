@@ -1,14 +1,14 @@
-'use strict';
-let express = require( 'express' );
-let path = require( 'path' );
-let routes = require( './routes/index');
+// Server
+const express = require( 'express' );
+const path = require( 'path' );
+const routes = require( './routes/index' );
 
-let app  = express();
+const app = express();
 
-app.set( 'views', path.join( __dirname, 'views' ) );
-app.set( 'view engine', 'jade');
+app.set( 'views', path.join( __dirname, 'views' ));
+app.set( 'view engine', 'jade' );
 
-app.use( express.static( path.join( __dirname, '../public' ) ) );
+app.use( express.static( path.join( __dirname, '../public' )));
 app.use( '/', routes );
 
 module.exports = app;

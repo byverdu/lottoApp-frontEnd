@@ -1,14 +1,12 @@
-'use strict';
-
+// Entry point
 import React from 'react';
 import { Router } from 'react-router';
-import {createHashHistory} from 'history/lib/createBrowserHistory';
 import { render } from 'react-dom';
-import routes from './routes.jsx';
+import routes from './routes/routes.jsx';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
-let rootElement = document.getElementById( 'reactOutput' );
-
+const rootElement = document.getElementById( 'reactOutput' );
 
 render(
-  <Router routes={ routes } history={ createHashHistory }></Router>, rootElement
+  <Router routes={ routes } history={ createBrowserHistory() } />, rootElement
 );

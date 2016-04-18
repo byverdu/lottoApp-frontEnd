@@ -1,9 +1,6 @@
-'use strict';
-
 // Entry point
-
-let app = require( './src/server');
-let config = require( './config/config' );
+const app = require( './src/server' );
+const config = require( './config/config' );
 
 app.listen( config.server.port, config.server.host, function() {
 
