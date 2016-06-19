@@ -1,16 +1,13 @@
-'use strict';
-import {Helper} from '../../../config/helper';
-
-let mongoose = require('mongoose'),
-  Lotto = mongoose.model('Lotto'),
-  helper = new Helper();
+import { Helper } from '../../../config/helper';
+const mongoose = require( 'mongoose' );
+const Lotto = mongoose.model( 'Lotto' );
+const helper = new Helper();
 
 // Home page
-exports.findLottoID = (req, res, next) => {
-  Lotto.find(function (err, lottos) {
-    if (!err) {
-
-      res.render('index', {
+exports.findLottoID = ( req, res, next ) => {
+  Lotto.find(( err, lottos ) => {
+    if ( !err ) {
+      return res.render( 'index', {
         title: 'LottoApp',
         lottos: helper.extractLottoID(lottos)
       });

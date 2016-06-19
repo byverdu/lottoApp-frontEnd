@@ -1,17 +1,14 @@
-'use strict';
+// Expres configuration, required on the server file at ./
+const express = require( 'express' );
+const glob = require( 'glob' );
+const logger = require( 'morgan' );
+const cookieParser = require( 'cookie-parser' );
+const bodyParser = require( 'body-parser' );
+const compress = require( 'compression' );
+const methodOverride = require( 'method-override' );
 
-let express = require('express');
-let glob = require('glob');
-
-let favicon = require('serve-favicon');
-let logger = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let compress = require('compression');
-let methodOverride = require('method-override');
-
-module.exports = function(app, config) {
-  let env = process.env.NODE_ENV || 'development';
+module.exports = function( app, config ) {
+  const env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
 
@@ -29,13 +26,13 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
 
-  let controllers = glob.sync(config.root + '/app/controllers/*.js');
+  const controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
-    require(controller)(app);
+    require( controller)(app );
   });
 
   app.use(function (req, res, next) {
-    let err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
   });

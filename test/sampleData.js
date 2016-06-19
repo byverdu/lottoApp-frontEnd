@@ -1,5 +1,4 @@
-'use strict';
-
+/* eslint-disable */
 module.exports = () => {
 return  {
   	'_id' : '561d0de9fc5bd7008eeb0d3b',

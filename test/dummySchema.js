@@ -1,14 +1,14 @@
-'use strict';
 module.exports = (fakeSchema, sampleData) => {
-  fakeSchema.lottoID = sampleData.lottoID;
-  fakeSchema.date = sampleData.date;
-  fakeSchema.lastResult = sampleData.lastResult;
-  fakeSchema.extras = sampleData.extras;
-  fakeSchema.mostRepeated = sampleData.mostRepeated;
-  fakeSchema.statistics = sampleData.statistics;
-  fakeSchema.allResults = sampleData.allResults;
-  fakeSchema.stars.lastResult = sampleData.stars.lastResult;
-  fakeSchema.stars.mostRepeated = sampleData.stars.mostRepeated;
-  fakeSchema.stars.allResults = sampleData.stars.allResults;
-  fakeSchema.stars.statistics = sampleData.stars.statistics;
+  const innerSchema = fakeSchema;
+  innerSchema.lottoID = sampleData.lottoID;
+  innerSchema.date = sampleData.date;
+  innerSchema.lastResult = sampleData.lastResult;
+  innerSchema.extras = sampleData.extras;
+  innerSchema.mostRepeated = sampleData.mostRepeated;
+  innerSchema.statistics = sampleData.statistics;
+  innerSchema.allResults = sampleData.allResults;
+  innerSchema.stars.lastResult = sampleData.stars.lastResult;
+  innerSchema.stars.mostRepeated = sampleData.stars.mostRepeated;
+  innerSchema.stars.allResults = sampleData.stars.allResults;
+  innerSchema.stars.statistics = sampleData.stars.statistics;
 };

@@ -1,16 +1,15 @@
-'use strict';
 
-let express = require('express'),
-  router = express.Router(),
-  pathRouting = require('./pathRouting/pathRouting');
+const express = require( 'express' );
+const router = express.Router();
+const pathRouting = require( './pathRouting/pathRouting' );
 
-module.exports = function (app) {
-  app.use('/', router);
+module.exports = function ( app ) {
+  app.use( '/', router );
 };
 
 // Routes for index
-router.get('/', pathRouting.findLottoID);
-router.post('/', pathRouting.postQueryToLotto);
+router.get( '/', pathRouting.findLottoID );
+router.post( '/', pathRouting.postQueryToLotto );
 
 // routes for lotto
-router.get('/lotto', pathRouting.getLottoPage);
+router.get( '/lotto', pathRouting.getLottoPage );

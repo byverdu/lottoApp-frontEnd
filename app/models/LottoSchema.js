@@ -1,9 +1,7 @@
 // Example model
-'use strict';
-
 import mongoose from 'mongoose';
 
-let LottoSchema = mongoose.Schema({
+const LottoSchema = mongoose.Schema({
 
   lottoID: String,
   date: String,
@@ -20,48 +18,48 @@ let LottoSchema = mongoose.Schema({
   }
 });
 
-LottoSchema.methods.getLottoID = function() {
+LottoSchema.methods.getLottoID = function () {
   return this.lottoID;
 };
 
-LottoSchema.methods.getLastDate = function() {
+LottoSchema.methods.getLastDate = function () {
   return this.date;
 };
 
-LottoSchema.methods.getLastResult = function() {
+LottoSchema.methods.getLastResult = function () {
   return this.lastResult;
 };
 
-LottoSchema.methods.getMostRepeated = function() {
+LottoSchema.methods.getMostRepeated = function () {
   return this.mostRepeated;
 };
 
-LottoSchema.methods.getExtras = function() {
+LottoSchema.methods.getExtras = function () {
   return this.extras;
 };
 
-LottoSchema.methods.getAllResults = function() {
+LottoSchema.methods.getAllResults = function () {
   return this.allResults;
 };
 
-LottoSchema.methods.getStatistics = function() {
+LottoSchema.methods.getStatistics = function () {
   return this.statistics;
 };
 
-LottoSchema.methods.getLastResultStars = function() {
+LottoSchema.methods.getLastResultStars = function () {
   return this.stars.lastResult;
 };
 
-LottoSchema.methods.getMostRepeatedStars = function() {
+LottoSchema.methods.getMostRepeatedStars = function () {
   return this.stars.mostRepeated;
 };
 
-LottoSchema.methods.getAllResultsStars = function() {
+LottoSchema.methods.getAllResultsStars = function () {
   return this.stars.allResults;
 };
 
-LottoSchema.methods.getStatisticsStars = function() {
+LottoSchema.methods.getStatisticsStars = function () {
   return this.stars.statistics;
 };
 
-module.exports = mongoose.model('Lotto', LottoSchema);
+module.exports = mongoose.model( 'Lotto', LottoSchema );

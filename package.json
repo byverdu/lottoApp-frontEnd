@@ -5,7 +5,7 @@
   "main": "server",
   "scripts": {
     "start": "babel-node server",
-    "nodemon": "nodemon -e js,json,jsx --exec babel-node server",
+    "nodemon": "ENV_DEVELOPMENT='development' nodemon -e js,json,jsx --exec babel-node server",
     "test": "mocha --compilers js:babel-core/register",
     "testhelp": "mocha --compilers js:babel-core/register test/helperSpec"
   },
@@ -17,24 +17,35 @@
     "cookie-parser": "^1.3.3",
     "express": "^4.13.3",
     "glob": "^5.0.3",
-    "jade": "^1.11.0",
     "method-override": "^2.3.0",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
+    "pug": "^2.0.0-beta3",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.2.0",
+    "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "chai": "^3.4.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-develop": "^0.4.0",
-    "grunt-sass": "^1.0.0",
-    "load-grunt-tasks": "^3.2.0",
+    "eslint": "^2.13.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-mocha": "^3.0.0",
+    "eslint-plugin-react": "^5.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-connect": "^4.1.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-watch": "^4.3.6",
     "mocha": "^2.3.4",
-    "request": "^2.60.0",
-    "time-grunt": "^1.2.1"
+    "request": "^2.60.0"
   }
 }

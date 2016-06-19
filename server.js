@@ -1,24 +1,26 @@
-'use strict';
+const express = require( 'express' );
+const config = require( './config/config' );
+const glob = require( 'glob' );
+const mongoose = require( 'mongoose' );
 
-let express = require('express'),
-  config = require('./config/config'),
-  glob = require('glob'),
-  mongoose = require('mongoose');
+function requireModel( model ) {
+  require( model ); // eslint-disable-line global-require
+}
 
-mongoose.connect(config.db);
-let db = mongoose.connection;
-db.on('error', function () {
-  throw new Error('unable to connect to database at ' + config.db);
+mongoose.connect( config.db );
+const db = mongoose.connection;
+db.on( 'error', () => {
+  throw new Error( `unable to connect to database at ${config.db}` );
 });
 
-let models = glob.sync(config.root + '/app/models/*.js');
-models.forEach(function (model) {
-  require(model);
+const models = glob.sync( `${config.root}/app/models/*.js` );
+models.forEach(( model ) => {
+  requireModel( model );
 });
-let app = express();
+const app = express();
 
-require('./config/express')(app, config);
+require( './config/express' )( app, config );
 
-app.listen(config.port, function () {
-  console.log('Express server listening on port ' + config.port);
+app.listen( config.port, () => {
+  console.log( `Express server listening on port ${config.port}` );
 });
