@@ -1,12 +1,16 @@
 // SCSS file configuration for gulp task
+
+const scssConfig = require( '../config/gulp' ).scss;
+
 module.exports = function ( gulp, plugins ) {
   return function () {
-    return plugins.scss( './scss/style.scss', { style: 'expanded' })
-      .pipe( plugins.autoprefixer( 'last 2 versions' ))
-      .pipe( gulp.dest( './app/public/css/' ))
-      .pipe( plugins.rename({ sufix: '.min' }))
+    return plugins.scss( scssConfig.source, { style: 'expanded' })
+      .pipe( plugins.autoprefixer( scssConfig.autoprefixer ))
+      .pipe( gulp.dest( scssConfig.dest ))
+      .pipe( plugins.rename({ suffix: '.min' }))
       .pipe( plugins.minify())
-      .pipe( gulp.dest( './app/public/css' ))
-      .pipe( plugins.notify({ message: 'All scss files compiled' }));
+      .pipe( gulp.dest( scssConfig.dest ))
+      .pipe( plugins.livereload())
+      .pipe( plugins.notify({ message: scssConfig.message }));
   };
 };

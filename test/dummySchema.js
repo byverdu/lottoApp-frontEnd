@@ -1,4 +1,4 @@
-module.exports = (fakeSchema, sampleData) => {
+module.exports = ( fakeSchema, sampleData ) => {
   const innerSchema = fakeSchema;
   innerSchema.lottoID = sampleData.lottoID;
   innerSchema.date = sampleData.date;
