@@ -1,13 +1,10 @@
-'use strict';
-export class Helper{
+module.exports = {
+  extractLottoID( lottosDB ) {
+    const lottoIDContainer = [];
 
-  extractLottoID(lottosDB) {
-    let lottoIDContainer = [];
-
-    lottosDB.forEach((el) => {
-      lottoIDContainer.push(el.lottoID);
+    lottosDB.forEach(( el ) => {
+      lottoIDContainer.push( el.lottoID );
     });
-
     return lottoIDContainer;
   }
-}
+};

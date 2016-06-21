@@ -1,10 +1,8 @@
-'use strict';
+const path = require( 'path' );
+const rootPath = path.normalize( `${__dirname}/..` );
+const env = process.env.NODE_ENV || 'development';
 
-let path = require('path'),
-    rootPath = path.normalize(__dirname + '/..'),
-    env = process.env.NODE_ENV || 'development';
-
-let config = {
+const config = {
   development: {
     root: rootPath,
     app: {
@@ -33,4 +31,4 @@ let config = {
   }
 };
 
-module.exports = config[env];
+module.exports = config[ env ];
