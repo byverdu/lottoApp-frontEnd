@@ -1,10 +1,12 @@
+// global helper
+
+const lottoConfig = require( './lotto');
+
 module.exports = {
   extractLottoID( lottosDB ) {
-    const lottoIDContainer = [];
-
-    lottosDB.forEach(( el ) => {
-      lottoIDContainer.push( el.lottoID );
-    });
-    return lottoIDContainer;
+    return lottosDB.map(( lotto ) => lotto.lottoID );
+  },
+  getCountBalls( lottoID ) {
+    return lottoConfig[ lottoID ].countBall;
   }
 };

@@ -6,7 +6,6 @@ const cookieParser = require( 'cookie-parser' );
 const bodyParser = require( 'body-parser' );
 const compress = require( 'compression' );
 const methodOverride = require( 'method-override' );
-const path = require( 'path' );
 
 module.exports = function ( app, config ) {
   const innerApp = app;

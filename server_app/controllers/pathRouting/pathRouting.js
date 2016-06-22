@@ -23,7 +23,13 @@ exports.postQueryToLotto = ( req, res ) => {
 
 // Lotto page
 exports.getLottoPage = ( req, res ) => {
+  const lottoID = req.query.lottoID;
+  const countBall = helper.getCountBalls( lottoID );
+  const totalBalls = Array.from({ length: countBall }, ( v, k ) => k ).slice( 1 );
+  totalBalls.push( countBall );
+
   res.render( 'lotto', {
-    title: req.query.lottoID
+    title: lottoID,
+    balls: totalBalls
   });
 };

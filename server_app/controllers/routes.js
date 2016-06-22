@@ -13,3 +13,6 @@ router.post( '/', pathRouting.postQueryToLotto );
 
 // routes for lotto
 router.get( '/lotto', pathRouting.getLottoPage );
+router.get( '/statistics', (req, res) => {
+  
+})
