@@ -146,7 +146,7 @@ describe('Model Schema', () => {
           expect(lotto.getStatisticsStars()).to.be.an('Array');
         });
         it('Each statistic is an object with 3 properties', () => {
-          let firstStatistic = lotto.getStatisticsStars()[0];
+          const firstStatistic = lotto.getStatisticsStars()[ 0 ];
           expect(firstStatistic).to.be.an('Object');
           expect(firstStatistic).to.have.property('count');
           expect(firstStatistic).to.have.property('index');

@@ -13,7 +13,7 @@ const plugins = require( 'gulp-load-plugins' )({
 
 function getTasks( task ) {
   // eslint-disable-next-line global-require
-  return require( `./gulpTasks/${task}` );
+  return require( `./gulpTasks/tasks/${task}` );
 }
 
 gulp.task( 'clean', getTasks( 'clean' )( clean ));

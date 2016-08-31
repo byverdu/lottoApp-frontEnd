@@ -1,5 +1,5 @@
 // clean/delete folders before every task is run
-const paths = require( '../config/gulp' );
+const paths = require( '../paths' );
 
 module.exports = function ( cleanModule ) {
   return function () {

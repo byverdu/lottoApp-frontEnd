@@ -1,6 +1,6 @@
 // SCSS file configuration for gulp task
 
-const scssConfig = require( '../config/gulp' ).scss;
+const scssConfig = require( '../paths' ).scss;
 
 module.exports = function ( gulp, plugins ) {
   return function () {

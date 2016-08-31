@@ -1,5 +1,5 @@
 // Watch gulp task for when a file is saved
-const paths = require( '../config/gulp' );
+const paths = require( '../paths' );
 
 module.exports = function ( gulp, plugins ) {
   return function () {

@@ -28,7 +28,7 @@ module.exports = function ( app, config ) {
   innerApp.use( '/tether', express.static( './node_modules/tether/dist/' ));
   innerApp.use( '/bootstrap', express.static( './node_modules/bootstrap/dist/' ));
   innerApp.use( methodOverride());
-  const controllers = glob.sync( `${config.root}/server_app/controllers/*.js` );
+  const controllers = glob.sync( `${config.root}/server_app/routes/*.js` );
   controllers.forEach(( controller ) => {
     require( controller )( innerApp ); // eslint-disable-line global-require
   });
