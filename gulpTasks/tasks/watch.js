@@ -1,9 +1,9 @@
 // Watch gulp task for when a file is saved
 const paths = require( '../paths' );
 
-module.exports = function ( gulp, plugins ) {
+module.exports = function ( gulp, plugins, reload ) {
   return function () {
-    plugins.livereload.listen();
-    gulp.watch( paths.scss.source, ['scss']);
+    // gulp.watch( paths.scss.source, ['scss']);
+    gulp.watch( paths.build.source, ['build']).on( 'change', reload );
   };
 };
