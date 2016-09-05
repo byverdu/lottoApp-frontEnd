@@ -1,22 +1,17 @@
 const express = require( 'express' );
-const config = require( './config/config' );
-const glob = require( 'glob' );
-const mongoose = require( 'mongoose' );
+const path = require( 'path' );
 
-mongoose.connect( config.db );
-const db = mongoose.connection;
-db.on( 'error', () => {
-  throw new Error( `unable to connect to database at ${config.db}` );
-});
-
-const models = glob.sync( `${config.root}/server_app/models/*.js` );
-models.forEach(( model ) => {
-  require( model ); // eslint-disable-line global-require
-});
 const app = express();
+const router = express.Router();
 
-require( './config/express' )( app, config );
+app.use( express.static( `${__dirname}/dist/public` ));
+app.use( express.static( `${__dirname}` ));
+app.use( '/', router.get( '/', ( req, res ) => {
+  res.sendFile( path.join( `${__dirname}/dist/index.html` ));
+}));
 
-app.listen( config.port, () => {
-  console.log( `Express server listening on port ${config.port}` );
+app.listen( 3000, () => {
+  console.log( `Express server listening on port ${3000}` );
 });
+
+module.exports = app;

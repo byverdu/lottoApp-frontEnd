@@ -1,6 +1,6 @@
 // SCSS file configuration for gulp task
 
-const scssConfig = require( '../config/gulp' ).scss;
+const scssConfig = require( '../paths' ).scss;
 
 module.exports = function ( gulp, plugins ) {
   return function () {
@@ -10,7 +10,6 @@ module.exports = function ( gulp, plugins ) {
       .pipe( plugins.rename({ suffix: '.min' }))
       .pipe( plugins.minify())
       .pipe( gulp.dest( scssConfig.dest ))
-      .pipe( plugins.livereload())
-      .pipe( plugins.notify({ message: scssConfig.message }));
+      .pipe( plugins.notify( scssConfig.notify ));
   };
 };
