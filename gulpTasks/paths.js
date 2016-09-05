@@ -26,7 +26,7 @@ module.exports = {
   },
   serve: {
     open: false,
-    port: 3000,
+    port: 9000,
     server: {
       baseDir: ['./dist', './'],
       middleware: ( request, response, next ) => {
