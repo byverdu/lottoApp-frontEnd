@@ -6,8 +6,7 @@
   "scripts": {
     "start": "babel-node server",
     "nodemon": "ENV_DEVELOPMENT='development' nodemon -e js,json,jsx --exec babel-node server",
-    "test": "mocha --compilers js:babel-core/register",
-    "testhelp": "mocha --compilers js:babel-core/register test/helperSpec"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "dependencies": {
     "babel": "^6.0.14",
@@ -19,7 +18,6 @@
     "babel-core": "^6.2.0",
     "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
     "browser-sync": "^2.14.3",
     "chai": "^3.4.1",
     "del": "^2.2.0",

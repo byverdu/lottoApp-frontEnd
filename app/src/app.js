@@ -1,29 +1,33 @@
 import { inject } from '../../jspm_packages/npm/aurelia-framework@1.0.2';
-import { HttpClient } from '../../jspm_packages/npm/aurelia-fetch-client@1.0.0';
-import { HttpRequestInterceptor } from '../services/httpRequestInterceptor';
+import FetchApi from '../services/fetchApi';
 
-@inject( HttpClient, HttpRequestInterceptor )
+@inject( FetchApi )
 export default class App {
-  constructor( http, requestInterceptor ) {
-    this.http = http;
-    this.requestInterceptor = requestInterceptor;
+  constructor( fetchApi ) {
+    this.fetchApi = fetchApi;
   }
 
   attached() {
-    this.name = 'paco xoxo';
-    const rq = {};
-    rq.method = 'get';
+    this.fetchApi.getLottos()
+      .then(( response ) => {
+        console.log( response );
+        this.lottos = response.lottos;
+      });
 
-    if (null) {
-      rq.body = JSON.stringify(null);
-    }
-
-    this.requestInterceptor.process(rq);
-    console.log(rq);
-    this.http.fetch( 'primitiva', rq )
-      .then( response => response.json())
-      .then( data => {
-        console.log( data );
+    this.fetchApi.getPrimitiva()
+      .then(( response ) => {
+        console.log( response );
+        this.primi = response.primitiva;
+      });
+    this.fetchApi.getBonoloto()
+      .then(( response ) => {
+        console.log( response );
+          this.bono = response.bonoloto;
+      });
+    this.fetchApi.getEuromillions()
+      .then(( response ) => {
+        console.log( response );
+        this.euro = response.euromillions;
       });
   }
 }
