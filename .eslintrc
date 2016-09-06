@@ -8,7 +8,7 @@
     "space-in-parens": [2, "always", { "exceptions": ["()","{}","[]"] } ],
     "computed-property-spacing": [2, "always"],
     "no-param-reassign": 2,
-    new-cap: ["error", { "properties": false }]
+    "new-cap": ["error", { "properties": false }]
   },
   "env": {
     "es6": true,
