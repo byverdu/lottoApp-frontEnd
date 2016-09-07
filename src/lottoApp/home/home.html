@@ -1,0 +1,11 @@
+<template>
+  <h1>lotto page</h1>
+  <h1>hello ${primi.lottoID}</h1>
+  <h1>hello ${bono.lottoID}</h1>
+  <h1>hello ${euro.lottoID}</h1>
+  <div repeat.for="lotto of lottos">
+    <button click.trigger="handleClickBtnId(lotto)">
+      ${lotto}
+    </button>
+  </div>
+</template>

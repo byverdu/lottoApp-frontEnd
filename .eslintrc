@@ -1,6 +1,5 @@
 {
   "parser": "babel-eslint",
-  "plugins": [ "mocha" ],
   "extends": "airbnb-base",
   "rules": {
     "indent": [2],
