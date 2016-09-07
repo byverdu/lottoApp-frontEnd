@@ -11,8 +11,8 @@ var browserSync = require( 'browser-sync' );
 var typescript = require( 'gulp-typescript' );
 var htmlmin = require( 'gulp-htmlmin' );
 var autoprefixer = require( 'gulp-autoprefixer' );
-// const rename = require( 'gulp-rename' );
-// const minify = require( 'gulp-cssnano' );
+const rename = require( 'gulp-rename' );
+const minify = require( 'gulp-cssnano' );
 var scss = require( 'gulp-ruby-sass' );
 
 // transpiles changed es6 files to SystemJS format
@@ -43,20 +43,16 @@ gulp.task('build-html', function() {
     .pipe(gulp.dest(paths.output));
 });
 
-gulp.task( 'compile-sass', function() {
-  return scss( paths.sass, { style: 'expanded' })
-    // .pipe( autoprefixer( 'last 2 versions' ))
-    // .pipe( changed( paths.output, { extension: '.css' }))
-    .pipe( gulp.dest( paths.sassOutput ))
-    // .pipe( browserSync.stream());
-});
-
 // copies changed css files to the output directory
-gulp.task( 'build-css', ['compile-sass'], function () {
-  return gulp.src(paths.css)
-    .pipe(changed(paths.output, {extension: '.css'}))
-    .pipe(gulp.dest(paths.output))
-    .pipe(browserSync.stream());
+gulp.task( 'build-css', function() {
+  return scss( paths.sass, { style: 'expanded' })
+    .pipe( autoprefixer( 'last 2 versions' ))
+    .pipe( changed( paths.output, { extension: '.css' }))
+    .pipe( gulp.dest( paths.sassOutput ))
+    .pipe( rename({ suffix: '.min' }))
+    .pipe( minify())
+    .pipe( gulp.dest( paths.sassOutput ))
+    .pipe( browserSync.stream());
 });
 
 // this task calls the clean task (located
@@ -66,7 +62,7 @@ gulp.task( 'build-css', ['compile-sass'], function () {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'compile-sass', 'build-css'],
+    ['build-system', 'build-html', 'build-css'],
     callback
   );
 });

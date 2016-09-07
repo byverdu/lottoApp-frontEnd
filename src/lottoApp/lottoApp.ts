@@ -12,9 +12,9 @@ export default class LottoApp {
         moduleId: './home/home'
       },
       {
-        route: 'lotto/:id',
+        route: 'lotto/:lottoID',
         title: 'Lotto',
-        name: 'lotto/:id',
+        name: 'lotto/:lottoID',
         moduleId: './lotto/lotto'
       }
     ]);

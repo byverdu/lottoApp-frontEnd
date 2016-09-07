@@ -33,6 +33,7 @@
     "./src/blur-image.ts",
     "./src/interfaces/IFetchAPI.ts",
     "./src/lottoApp/home/home.ts",
+    "./src/lottoApp/lotto/home/home.ts",
     "./src/lottoApp/lotto/lotto.ts",
     "./src/lottoApp/lottoApp.ts",
     "./src/main.ts",
