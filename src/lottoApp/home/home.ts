@@ -2,7 +2,7 @@ import { autoinject } from 'aurelia-framework';
 import FetchApi from '../../services/fetchApi';
 
 @autoinject
-export default class Index {
+export default class Home {
   public lottos: Array<string>;
   public title: string = 'Select your game!';
   constructor( private fetchApi: FetchApi ) {

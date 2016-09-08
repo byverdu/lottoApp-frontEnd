@@ -27,19 +27,32 @@ export default class FetchApi {
       .then( response => response.json());
   }
 
-  public getPrimitiva(): Promise<IFetchAPI> {
+  public chooseFetchMethod( params: string ): Promise<IFetchAPI> {
+    switch( params ) {
+      case 'primitiva':
+        return this.getPrimitiva();
+      case 'bonoloto':
+        return this.getBonoloto();
+      case 'euromillions':
+        return this.getEuromillions();
+      default:
+        return;
+    }
+  }
+
+  private getPrimitiva(): Promise<IFetchAPI> {
     const rq = this.httpHeader;
     return this.http.fetch( 'primitiva', rq )
       .then( response => response.json());
   }
 
-  public getBonoloto(): Promise<IFetchAPI> {
+  private getBonoloto(): Promise<IFetchAPI> {
     const rq = this.httpHeader;
     return this.http.fetch( 'bonoloto', rq )
       .then( response => response.json());
   }
 
-  public getEuromillions(): Promise<IFetchAPI> {
+  private getEuromillions(): Promise<IFetchAPI> {
     const rq = this.httpHeader;
     return this.http.fetch( 'euromillions', rq )
       .then( response => response.json());
