@@ -1,0 +1,57 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es5",
+    "module": "amd",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "./typings/index.d.ts",
+    "./custom_typings/**/*.d.ts",
+    "./jspm_packages/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "jspm_packages"
+  ],
+  "files": [
+    "./src/app.ts",
+    "./src/blur-image.ts",
+    "./src/interfaces/IFetchAPI.ts",
+    "./src/lottoApp/home/home.ts",
+    "./src/lottoApp/lotto/home/home.ts",
+    "./src/lottoApp/lotto/lotto.ts",
+    "./src/lottoApp/lotto/results/results.ts",
+    "./src/lottoApp/lotto/statistics/statistics.ts",
+    "./src/lottoApp/lotto/winners/winners.ts",
+    "./src/lottoApp/lottoApp.ts",
+    "./src/main.ts",
+    "./src/services/fetchApi.ts",
+    "./src/services/httpRequestInterceptor.ts",
+    "./test/e2e/src/demo.spec.ts",
+    "./test/e2e/src/skeleton.po.ts",
+    "./test/e2e/src/welcome.po.ts",
+    "./test/unit/app.spec.ts",
+    "./test/unit/child-router.spec.ts",
+    "./test/unit/setup.ts",
+    "./test/unit/users.spec.ts",
+    "./typings/index.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}

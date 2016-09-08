@@ -1,0 +1,7 @@
+<template>
+  <h1>${title}</h1>
+  <div repeat.for="lotto of lottos">
+    <a route-href="route: lotto/:lottoID; params.bind: {lottoID: lotto}">go to ${lotto}</a>
+  </div>
+</template>
+z
