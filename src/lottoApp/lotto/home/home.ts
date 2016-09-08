@@ -1,24 +1,31 @@
 import { autoinject } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
 import FetchApi from '../../../services/fetchApi';
+import LottoUtils from '../../../services/lottoUtils';
+import WindowStorage from '../../../services/windowStorage';
 
 @autoinject
 export default class Lotto {
-  public raffleType: Object = {};
+  public raffleType;
+  public test;
   constructor(
     private fetchApi: FetchApi,
-    private router: Router) {
+    private lottoUtils: LottoUtils,
+    private windowStorage: WindowStorage) {
     }
 
   attached() {
     // this.events.publish( 'selectedLotto', this.raffleType)
+    this.windowStorage.setWindowStorage('xocsxo', [0,1,2,3]);
+    this.test = this.windowStorage.getWindowStorage('xoxo');
   }
 
   activate( params ) {
     console.log(params, 'params');
-    this.fetchApi.chooseFetchMethod( params.lottoID )
+    const lottoID = params.lottoID;
+    this.fetchApi.chooseFetchMethod( lottoID )
       .then( response => {
-        this.raffleType = response[ params.lottoID ];
+        this.raffleType = response[ lottoID ];
+        this.raffleType.countBalls = this.lottoUtils.getCountBalls( lottoID );
         console.log(this.raffleType, 'raffleType');
       })
     }

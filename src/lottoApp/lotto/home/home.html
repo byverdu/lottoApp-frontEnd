@@ -1,4 +1,11 @@
 <template>
   <h1>hello ${raffleType.lottoID}</h1>
   <h3>most repeated: ${raffleType.mostRepeated}</h3>
+  <h3>count: ${raffleType.countBalls}</h3>
+  <p>${test}</p>
+  <ul>
+    <li repeat.for="ball of raffleType.countBalls">
+      <button type="button" name="button">${ball+1}</button>
+    </li>
+  </ul>
 </template>
