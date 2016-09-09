@@ -29,14 +29,13 @@ export default class Lotto {
         this.raffleType = response[ lottoID ];
         this.raffleType.totalBalls = totalBalls;
         this.raffleType.countBalls = countBalls;
-        // this.raffleType.randomBalls = this.lottoUtils.getRandomBallsByLotto(countBalls, totalBalls);
       })
     }
 
   public getRandomBallsByLotto() {
-    const totalBalls = this.raffleType.totalBalls;
-    const countBalls = this.raffleType.countBalls;
-    this.raffleType.randomBalls = this.lottoUtils.getRandomBallsByLotto(countBalls, totalBalls);
+    const randomBalls = this.lottoUtils.getRandomBallsByLotto(this.raffleType);
+
+    this.raffleType.randomBalls = randomBalls;
     console.log(this.raffleType, 'raffleType');
   }
 }
