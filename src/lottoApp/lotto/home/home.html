@@ -1,10 +1,12 @@
 <template>
   <h1>hello ${raffleType.lottoID}</h1>
   <h3>most repeated: ${raffleType.mostRepeated}</h3>
-  <h3>count: ${raffleType.countBalls}</h3>
-  <p>${test}</p>
+  <p>:)>>>)>${raffleType.randomBalls || 'upss'}</p>
+  <h3>count: ${raffleType.totalBalls}</h3>
+  <button click.trigger="getRandomBallsByLotto()">generate random values</button>
+  <p>${raffleType.randomBalls || 'upss'}</p>
   <ul>
-    <li repeat.for="ball of raffleType.countBalls">
+    <li repeat.for="ball of raffleType.totalBalls">
       <button type="button" name="button">${ball+1}</button>
     </li>
   </ul>

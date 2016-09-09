@@ -1,7 +1,7 @@
 import { autoinject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 import HttpRequestInterceptor from './httpRequestInterceptor';
-import { IFetchAPI } from '../interfaces/IFetchAPI';
+import { FetchInterface } from '../interfaces/FetchInterface';
 import 'fetch';
 
 @autoinject
@@ -21,13 +21,13 @@ export default class FetchApi {
     return rq;
   }
 
-  public getLottos(): Promise<IFetchAPI> {
+  public getLottos(): Promise<FetchInterface> {
     const rq = this.httpHeader;
     return this.http.fetch( 'lottos' )
       .then( response => response.json());
   }
 
-  public chooseFetchMethod( params: string ): Promise<IFetchAPI> {
+  public chooseFetchMethod( params: string ): Promise<FetchInterface> {
     switch( params ) {
       case 'primitiva':
         return this.getPrimitiva();
@@ -40,19 +40,19 @@ export default class FetchApi {
     }
   }
 
-  private getPrimitiva(): Promise<IFetchAPI> {
+  private getPrimitiva(): Promise<FetchInterface> {
     const rq = this.httpHeader;
     return this.http.fetch( 'primitiva', rq )
       .then( response => response.json());
   }
 
-  private getBonoloto(): Promise<IFetchAPI> {
+  private getBonoloto(): Promise<FetchInterface> {
     const rq = this.httpHeader;
     return this.http.fetch( 'bonoloto', rq )
       .then( response => response.json());
   }
 
-  private getEuromillions(): Promise<IFetchAPI> {
+  private getEuromillions(): Promise<FetchInterface> {
     const rq = this.httpHeader;
     return this.http.fetch( 'euromillions', rq )
       .then( response => response.json());

@@ -1,9 +1,10 @@
 import { autoinject } from 'aurelia-framework';
 import FetchApi from '../../../services/fetchApi';
+import { LottoModel } from '../../../models/LottoModel';
 
 @autoinject
 export default class Statistics {
-  public raffleType: Object = {};
+  public raffleType: LottoModel;
   constructor( private fetchApi: FetchApi ) {
     }
   activate(params) {
