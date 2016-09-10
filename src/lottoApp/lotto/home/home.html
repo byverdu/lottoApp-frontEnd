@@ -4,7 +4,10 @@
   <p>:)>>>)>${raffleType.randomBalls || 'upss'}</p>
   <h3>count: ${raffleType.totalBalls}</h3>
   <button click.trigger="getRandomBallsByLotto()">generate random values</button>
-  <p>${combinations || 'upss'}<button click.trigger="saveSelectedNumbers()" name="button">Save</button></p>
+  <p>Results saved: ${raffleType.combinations.length || 'upss'}
+  <hr>
+  <h3>${combiToSave}</h3>
+  <button click.trigger="saveSelectedNumbers()" name="button">Save</button></p>
   <ul>
     <li repeat.for="ball of raffleType.totalBalls">
       <button type="button" name="button">${ball+1}</button>

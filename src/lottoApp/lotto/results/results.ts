@@ -1,19 +1,24 @@
-import { autoinject } from 'aurelia-framework';
-import FetchApi from '../../../services/fetchApi';
+import { autoinject, BindingEngine, Disposable } from 'aurelia-framework';
 import { LottoModel } from '../../../models/LottoModel';
+import LottoRouter from '../lotto';
 
 @autoinject
 export default class Results {
+  public subscriber: Disposable;
   public raffleType: LottoModel;
-  constructor( private fetchApi: FetchApi ) {
-    }
+  constructor(
+    private lottoRouter: LottoRouter,
+    private bindingEngine: BindingEngine
+  ) {
+      this.lottoRouter = lottoRouter;
+      console.log(this.lottoRouter.raffleType, 'lottoRouter');
+      this.subscriber = this.bindingEngine
+        .propertyObserver(this.lottoRouter, 'raffleType')
+        .subscribe(this.lottoRouterData.bind(this));
+  }
 
-  activate(params) {
-    console.log(params, 'results params');
-    this.fetchApi.chooseFetchMethod( params.lottoID )
-      .then( response => {
-        this.raffleType = response[ params.lottoID ];
-        console.log(this.raffleType, 'results lotto');
-      });
+  private lottoRouterData(data) {
+    console.log(data, 'bindingEngine')
+    this.raffleType = data;
   }
 }

@@ -1,14 +1,20 @@
 import { Router, RouterConfiguration } from 'aurelia-router';
 import { autoinject } from 'aurelia-framework';
+import FetchApi from '../../services/fetchApi';
+import { LottoModel } from '../../models/LottoModel';
 
 @autoinject
 export default class LottoRouter {
   public router: Router;
+  public raffleType: LottoModel;
+  constructor(private fetchApi: FetchApi) {
+    this.fetchApi = fetchApi;
+  }
   configureRouter( config: RouterConfiguration, router: Router ) {
     config.map([
       {
         route: '',
-        title: 'xoxo',
+        title: 'home',
         moduleId: './home/home',
         nav: true
       },
@@ -32,5 +38,13 @@ export default class LottoRouter {
       }
     ]);
     this.router = router;
+  }
+
+  attached() {
+    const lottoID = this.router.parent.currentInstruction.params.lottoID;
+    this.fetchApi.chooseFetchMethod( lottoID )
+      .then( response => {
+        this.raffleType = response[ lottoID ];
+      });
   }
 }

@@ -9,4 +9,5 @@ export class LottoModel implements LottoInterface {
   statistics;
   lastResult;
   mostRepeated;
+  combinations;
 }
