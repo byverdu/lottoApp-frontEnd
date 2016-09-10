@@ -32,4 +32,9 @@ export default class LottoUtils {
     console.log(result, 'result getRandomBallsByLotto')
     return result.sort(( a, b ) => a - b );
   }
+
+  public itemsToString( combinations: Array<number> ): string {
+    if (combinations === undefined ) return;
+    return combinations.join(',');
+  }
 }

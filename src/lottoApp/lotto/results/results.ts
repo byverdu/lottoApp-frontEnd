@@ -9,11 +9,11 @@ export default class Results {
     }
 
   activate(params) {
-    console.log(params, 'results params')
+    console.log(params, 'results params');
     this.fetchApi.chooseFetchMethod( params.lottoID )
       .then( response => {
         this.raffleType = response[ params.lottoID ];
         console.log(this.raffleType, 'results lotto');
-      })
+      });
   }
 }
