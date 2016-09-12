@@ -1,14 +1,19 @@
 import { Router, RouterConfiguration } from 'aurelia-router';
 import { autoinject } from 'aurelia-framework';
 import FetchApi from '../../services/fetchApi';
+import LottoUtils from '../../services/lottoUtils';
+import WindowStorage from '../../services/windowStorage';
 import { LottoModel } from '../../models/LottoModel';
 
 @autoinject
 export default class LottoRouter {
   public router: Router;
   public raffleType: LottoModel;
-  constructor(private fetchApi: FetchApi) {
-    this.fetchApi = fetchApi;
+  constructor(
+    private fetchApi: FetchApi,
+    private windowStorage: WindowStorage,
+    private lottoUtils: LottoUtils
+  ) {
   }
   configureRouter( config: RouterConfiguration, router: Router ) {
     config.map([
@@ -40,11 +45,34 @@ export default class LottoRouter {
     this.router = router;
   }
 
-  attached() {
+  public attached() {
     const lottoID = this.router.parent.currentInstruction.params.lottoID;
     this.fetchApi.chooseFetchMethod( lottoID )
       .then( response => {
-        this.raffleType = response[ lottoID ];
+        const data = response[ lottoID ]
+        this.raffleType = data;
+        const totalBalls = this.lottoUtils.getTotalBalls( data.lottoID );
+        const countBalls = this.lottoUtils.getCountBalls( data.lottoID );
+        const combinations = this.windowStorage.getWindowStorage( data.lottoID );
+        const lastResultNumbers = this.lottoUtils.stringsToNumbers(data.lastResult)
+
+        this.setLottoProps(
+          this.raffleType,
+          totalBalls,
+          countBalls,
+          combinations,
+          lastResultNumbers
+        );
       });
+  }
+
+  private setLottoProps(lotto: LottoModel, ...args): LottoModel {
+    console.log(args, 'args setLottoProps')
+    return Object.assign( lotto, {
+      totalBalls: args[0],
+      countBalls: args[1],
+      combinations: args[2],
+      lastResultNumbers: args[3]
+    })
   }
 }

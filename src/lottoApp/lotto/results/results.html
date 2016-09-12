@@ -1,5 +1,12 @@
 <template>
   <h1>results page</h1>
-  <p>${raffleType.combinations || 'upss'}
-  <p>last results ${raffleType.lastResult || 'results null'}</p>
+  <div repeat.for="combis of raffleType.combinations">
+    <span repeat.for="comb of combis">${comb}</span>
+  </div>
+  <ul>
+    <li>
+      last results
+    </li>
+    <li repeat.for="result of raffleType.lastResultNumbers">${result}</li>
+  </ul>
 </template>

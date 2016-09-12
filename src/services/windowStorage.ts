@@ -11,10 +11,11 @@ export default class WindowStorage implements WindowStoreInterface {
     if ( this.localStorageSupported ) {
       if ( this.getWindowStorage(name) !== null ) {
         const oldValue = this.getWindowStorage(name);
-        console.log(oldValue, item, 'oldValue')
-        const result = oldValue.concat(item)
+        // console.log(oldValue, item, 'oldValue')
+        // const result = oldValue.concat(item)
+        oldValue.push(item);
 
-        return this.windowStorage.setItem( name, JSON.stringify( result ));
+        return this.windowStorage.setItem( name, JSON.stringify( oldValue ));
       }
       return;
     }
