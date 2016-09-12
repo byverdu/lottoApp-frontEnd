@@ -4,13 +4,28 @@
   <p>:)>>>)>${raffleType.randomBalls || 'upss'}</p>
   <h3>count: ${raffleType.totalBalls}</h3>
   <button click.trigger="getRandomBallsByLotto()">generate random values</button>
-  <p>Results saved: ${raffleType.combinations.length || 'upss'}
-  <hr>
-  <h3>${combiToSave}</h3>
-  <button click.trigger="saveSelectedNumbers()" name="button">Save</button></p>
-  <ul>
+  <p>Results saved: ${raffleType.combinations.length || 'upss'} </p>
+    <hr>
+    <ul>
+      <li repeat.for="combi of combiToSave">
+        ${combi}
+      </li>
+    </ul>
+    <button
+      disabled.bind="!(combiToSave.length === raffleType.countBalls)"
+      click.trigger="saveSelectedNumbers()"
+      name="button"
+    >Save
+    </button>
+    <button
+      disabled.bind="!(combiToSave.length > 0)"
+      click.trigger="clearAndUncheck()"
+      name="button"
+    >Clear
+    </button>
+  <ul style="display: inline-flex;list-style: none;">
     <li repeat.for="ball of raffleType.totalBalls">
-      <button type="button" name="button">${ball+1}</button>
+      ${ball+1} <input disabled.bind="(combiToSave.length === raffleType.countBalls)" class="test" type="checkbox" change.delegate="addBallToCombiToSave(ball)" value.bind="ball" />
     </li>
   </ul>
 </template>
