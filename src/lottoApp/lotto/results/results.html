@@ -1,5 +1,14 @@
 <template>
   <h1>results page</h1>
-  <p>${raffleType.combinations || 'upss'}
-  <p>last results ${raffleType.lastResult || 'results null'}</p>
+  <div class="combinations" repeat.for="combis of x">
+    <span repeat.for="comb of combis"><b class="number ${comb.isMatched ? 'green' : 'purple'}">${comb.value}-</b></span>
+  </div>
+  <ul>
+    <li>
+      last results
+    </li>
+    <li repeat.for="result of raffleType.lastResultNumbers">${result}</li>
+  </ul>
+  <button click.trigger="compareLastResultWithSaved(isMatched)" type="button">Check Raffles</button>
+  <button click.trigger="clearCompared()" type="button">Clear</button>
 </template>

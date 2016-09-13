@@ -1,9 +1,8 @@
 <template>
   <h1>statistics</h1>
   <u>
-    <li>statistics</li>
-    <li>index ${raffleType.statistics[0].index || 'statistics null'}</li>
-    <li>count ${raffleType.statistics[0].count || 'statistics null'}</li>
-    <li>${raffleType.statistics[0].color || 'statistics null'}</li>
+    <li repeat.for="stat of raffleType.statistics">
+      <b class="${stat.color}">${stat.index} => ${stat.count}</b>
+    </li>
   </u>
 </template>

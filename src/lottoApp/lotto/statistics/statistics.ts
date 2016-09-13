@@ -11,7 +11,7 @@ export default class Statistics {
     private lottoRouter: LottoRouter,
     private bindingEngine: BindingEngine
   ) {
-      this.lottoRouter = lottoRouter;
+      this.raffleType = lottoRouter.raffleType;
       console.log(this.lottoRouter.raffleType, 'lottoRouter');
       this.subscriber = this.bindingEngine
         .propertyObserver(this.lottoRouter, 'raffleType')

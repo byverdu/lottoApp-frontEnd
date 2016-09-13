@@ -37,4 +37,9 @@ export default class LottoUtils {
     if (combinations === undefined ) return;
     return combinations.join(',');
   }
+
+  public stringsToNumbers(singleString: string): Array<number> {
+    const tempArray: Array<string> = singleString.split(',');
+    return tempArray.map( item => Number(item));
+  }
 }

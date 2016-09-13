@@ -18,9 +18,10 @@ export default class Home {
     private bindingEngine: BindingEngine,
     private element: Element
   ) {
-      this.subscriber = this.bindingEngine
-        .propertyObserver(this.lottoRouter, 'raffleType')
-        .subscribe(this.lottoRouterData.bind(this));
+    this.raffleType = lottoRouter.raffleType;
+    this.subscriber = this.bindingEngine
+    .propertyObserver(this.lottoRouter, 'raffleType')
+    .subscribe(this.lottoRouterData.bind(this));
   }
 
   public addBallToCombiToSave(ball) {
@@ -48,13 +49,10 @@ export default class Home {
   }
 
   public saveSelectedNumbers() {
-    const randToString: string = this.lottoUtils.itemsToString(this.combiToSave);
-    if ( randToString !== undefined ) {
-      this.windowStorage.setWindowStorage(this.raffleType.lottoID, randToString);
-      console.log(this.raffleType, randToString, 'saveSelectedNumbers');
-      this.setCombinations();
-      this.clearAndUncheck();
-    }
+    this.windowStorage.setWindowStorage(this.raffleType.lottoID, this.combiToSave);
+    console.log(this.raffleType, 'saveSelectedNumbers');
+    this.setCombinations();
+    this.clearAndUncheck();
   }
 
   public getRandomBallsByLotto() {
@@ -63,27 +61,9 @@ export default class Home {
     console.log(this.combiToSave, 'getRandomBallsByLotto');
   }
 
-  private setLottoProps(lotto: LottoModel, ...args): LottoModel {
-    console.log(args, 'args setLottoProps')
-    return Object.assign( lotto, {
-      totalBalls: args[0],
-      countBalls: args[1],
-      combinations: args[2]
-    })
-  }
-
   private lottoRouterData(data) {
     console.log(data, 'bindingEngine')
     this.raffleType = data;
-    const totalBalls = this.lottoUtils.getTotalBalls( data.lottoID );
-    const countBalls = this.lottoUtils.getCountBalls( data.lottoID );
-    const combinations = this.windowStorage.getWindowStorage( data.lottoID );
-    this.setLottoProps(
-      this.raffleType,
-      totalBalls,
-      countBalls,
-      combinations
-    );
   }
 
   private setCombinations() {
