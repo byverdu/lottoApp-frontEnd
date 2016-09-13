@@ -7,5 +7,6 @@ export interface LottoInterface {
   statistics: Array<Object>;
   lastResult: string;
   mostRepeated: string;
-  combinations: Array<string>
+  combinations: Array<string>;
+  lastResultNumbers: Array<number>;
 }

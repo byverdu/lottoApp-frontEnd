@@ -40,8 +40,6 @@ export default class LottoUtils {
 
   public stringsToNumbers(singleString: string): Array<number> {
     const tempArray: Array<string> = singleString.split(',');
-    return tempArray.map( item => {
-      return Number(item);
-    });
+    return tempArray.map( item => Number(item));
   }
 }

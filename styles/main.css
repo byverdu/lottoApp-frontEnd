@@ -6,3 +6,15 @@ body {
 a {
   color: orange;
 }
+
+.green, .greenItem {
+  color: green;
+}
+
+.purple, .redItem {
+  color: purple;
+}
+
+.orangeItem {
+  color: orange;
+}

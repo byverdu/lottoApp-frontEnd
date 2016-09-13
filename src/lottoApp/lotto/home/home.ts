@@ -49,13 +49,10 @@ export default class Home {
   }
 
   public saveSelectedNumbers() {
-    // const randToString: string = this.lottoUtils.itemsToString(this.combiToSave);
-    // if ( randToString !== undefined ) {
-      this.windowStorage.setWindowStorage(this.raffleType.lottoID, this.combiToSave);
-      console.log(this.raffleType, 'saveSelectedNumbers');
-      this.setCombinations();
-      this.clearAndUncheck();
-    // }
+    this.windowStorage.setWindowStorage(this.raffleType.lottoID, this.combiToSave);
+    console.log(this.raffleType, 'saveSelectedNumbers');
+    this.setCombinations();
+    this.clearAndUncheck();
   }
 
   public getRandomBallsByLotto() {

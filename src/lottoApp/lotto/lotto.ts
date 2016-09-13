@@ -1,4 +1,4 @@
-import { Router, RouterConfiguration } from 'aurelia-router';
+import { Router, RouterConfiguration, NavigationInstruction, activationStrategy } from 'aurelia-router';
 import { autoinject } from 'aurelia-framework';
 import FetchApi from '../../services/fetchApi';
 import LottoUtils from '../../services/lottoUtils';
@@ -45,27 +45,6 @@ export default class LottoRouter {
     this.router = router;
   }
 
-  public attached() {
-    const lottoID = this.router.parent.currentInstruction.params.lottoID;
-    this.fetchApi.chooseFetchMethod( lottoID )
-      .then( response => {
-        const data = response[ lottoID ]
-        this.raffleType = data;
-        const totalBalls = this.lottoUtils.getTotalBalls( data.lottoID );
-        const countBalls = this.lottoUtils.getCountBalls( data.lottoID );
-        const combinations = this.windowStorage.getWindowStorage( data.lottoID );
-        const lastResultNumbers = this.lottoUtils.stringsToNumbers(data.lastResult)
-
-        this.setLottoProps(
-          this.raffleType,
-          totalBalls,
-          countBalls,
-          combinations,
-          lastResultNumbers
-        );
-      });
-  }
-
   private setLottoProps(lotto: LottoModel, ...args): LottoModel {
     console.log(args, 'args setLottoProps')
     return Object.assign( lotto, {
@@ -75,4 +54,30 @@ export default class LottoRouter {
       lastResultNumbers: args[3]
     })
   }
+
+  public activate(params, routeConfig: RouterConfiguration, instruction: NavigationInstruction) {
+    console.log(params,routeConfig, instruction,'args setLottoProps')
+    const lottoID = params.lottoID;
+    this.fetchApi.chooseFetchMethod( lottoID )
+      .then( response => {
+        const data = response[ lottoID ]
+        this.raffleType = data;
+        const totalBalls = this.lottoUtils.getTotalBalls( data.lottoID );
+        const countBalls = this.lottoUtils.getCountBalls( data.lottoID );
+        const combinations = this.windowStorage.getWindowStorage( data.lottoID );
+        const lastResultNumbers = this.lottoUtils.stringsToNumbers(data.lastResult);
+
+        this.setLottoProps(
+          this.raffleType,
+          totalBalls,
+          countBalls,
+          combinations,
+          lastResultNumbers
+        );
+      });
+    }
+
+    public determineActivationStrategy() {
+        return activationStrategy.invokeLifecycle;
+    }
 }
