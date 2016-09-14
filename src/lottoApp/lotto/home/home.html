@@ -6,9 +6,9 @@
   <button click.trigger="getRandomBallsByLotto()">generate random values</button>
   <p>Results saved: ${raffleType.combinations.length || 'upss'} </p>
     <hr>
-    <ul>
+    <ul style="display: inline-flex;list-style: none;">
       <li repeat.for="combi of combiToSave">
-        ${combi}
+        ${combi}-
       </li>
     </ul>
     <button
@@ -24,8 +24,16 @@
     >Clear
     </button>
   <ul style="display: inline-flex;list-style: none;">
-    <li repeat.for="ball of raffleType.totalBalls">
-      ${ball+1} <input disabled.bind="(combiToSave.length === raffleType.countBalls)" class="test" type="checkbox" change.delegate="addBallToCombiToSave(ball)" value.bind="ball" />
+    <li repeat.for="ball of totalBalls">
+      ${ball.value}
+      <input
+        class="test"
+        type="checkbox"
+        change.delegate="addBallToCombiToSave(ball.value)"
+        value.bind="ball.value"
+        disabled.bind="(combiToSave.length === raffleType.countBalls)"
+        checked.bind="ball.isChecked"
+      />
     </li>
   </ul>
 </template>

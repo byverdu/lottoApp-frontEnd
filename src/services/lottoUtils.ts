@@ -33,11 +33,6 @@ export default class LottoUtils {
     return result.sort(( a, b ) => a - b );
   }
 
-  public itemsToString( combinations: Array<number> ): string {
-    if (combinations === undefined ) return;
-    return combinations.join(',');
-  }
-
   public stringsToNumbers(singleString: string): Array<number> {
     const tempArray: Array<string> = singleString.split(',');
     return tempArray.map( item => Number(item));

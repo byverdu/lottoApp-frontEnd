@@ -1,7 +1,7 @@
 <template>
   <h1>results page</h1>
-  <div class="combinations" repeat.for="combis of x">
-    <span repeat.for="comb of combis"><b class="number ${comb.isMatched ? 'green' : 'purple'}">${comb.value}-</b></span>
+  <div class="combinations" repeat.for="combis of combinations">
+    <span repeat.for="number of combis"><b class="number ${number.isMatched ? 'green' : 'purple'}">${number.value}-</b></span>
   </div>
   <ul>
     <li>

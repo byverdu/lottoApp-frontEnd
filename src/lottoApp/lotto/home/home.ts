@@ -9,6 +9,7 @@ import LottoRouter from '../lotto';
 export default class Home {
   public raffleType: LottoModel;
   public combiToSave: Array<number> = [];
+  public totalBalls = [];
   public subscriber: Disposable;
   constructor (
     private fetchApi: FetchApi,
@@ -18,15 +19,18 @@ export default class Home {
     private bindingEngine: BindingEngine,
     private element: Element
   ) {
-    this.raffleType = lottoRouter.raffleType;
     this.subscriber = this.bindingEngine
-    .propertyObserver(this.lottoRouter, 'raffleType')
-    .subscribe(this.lottoRouterData.bind(this));
+      .propertyObserver(this.lottoRouter, 'raffleType')
+      .subscribe(this.lottoRouterData.bind(this));
   }
 
-  public addBallToCombiToSave(ball) {
+  public deactivate(){
+    this.subscriber.dispose();
+  }
+
+  public addBallToCombiToSave(ball: string) {
     const toNumber = Number(ball);
-    const numberConverted: number = toNumber + 1;
+    const numberConverted: number = toNumber;
     const indexChecked = this.combiToSave.indexOf(numberConverted);
 
     if (this.combiToSave.indexOf(numberConverted) === -1) {
@@ -39,13 +43,8 @@ export default class Home {
 
   public clearAndUncheck() {
     console.log(this.element, 'balllllllllll')
-    const x = this.element.querySelectorAll('.test:checked');
-    [].forEach.call(x, item => item.checked = false);
     this.combiToSave = [];
-  }
-
-  deactivate(){
-    this.subscriber.dispose();
+    this.totalBalls.forEach(ball => ball.isChecked = false)
   }
 
   public saveSelectedNumbers() {
@@ -58,15 +57,36 @@ export default class Home {
   public getRandomBallsByLotto() {
     this.clearAndUncheck();
     this.combiToSave = this.lottoUtils.getRandomBallsByLotto(this.raffleType);
+    this.checkAfterRandValues(this.totalBalls, this.combiToSave);
     console.log(this.combiToSave, 'getRandomBallsByLotto');
   }
 
-  private lottoRouterData(data) {
+  private lottoRouterData(data: LottoModel) {
     console.log(data, 'bindingEngine')
     this.raffleType = data;
+    const totalBalls: number = this.raffleType.totalBalls;
+    for (let counter = 1; counter <= totalBalls; counter++) {
+      this.totalBalls.push(
+        {
+          isChecked: false,
+          value: counter
+        }
+      )
+    }
+
+    console.log(this.totalBalls, 'lottoRouterData totalBalls')
+    return this.totalBalls;
   }
 
   private setCombinations() {
     this.raffleType.combinations = this.windowStorage.getWindowStorage( this.raffleType.lottoID );
+  }
+
+  private checkAfterRandValues(totalBalls: Array<any>, combiToSave: Array<number>): void {
+    totalBalls.forEach(ball => {
+      if(combiToSave.indexOf(ball.value) !== -1 ) {
+        ball.isChecked = true;
+      }
+    })
   }
 }
