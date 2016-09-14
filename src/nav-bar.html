@@ -1,5 +1,5 @@
 <template bindable="router">
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle Navigation</span>
@@ -26,5 +26,14 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
+  <div class="fixed">
+    <div class="tabs">
+      <a class="tab-item"  href="#">
+        <span>xoox</span>
+      </a>
+      <a class="tab-item" repeat.for="row of router.navigation" href.bind="row.href">${row.title}</a>
+      <a class="tab-item">
+      </div>
+  </div>
 </template>

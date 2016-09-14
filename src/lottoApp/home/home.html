@@ -1,7 +1,7 @@
 <template>
-  <h1>${title}</h1>
-  <div repeat.for="lotto of lottos">
-    <a route-href="route: lotto/:lottoID; params.bind: {lottoID: lotto}">go to ${lotto}</a>
+  <div class="homePage">
+    <div class="homePage__raffle" repeat.for="lotto of lottos">
+      <a class="button button-full button-balanced" route-href="route: lotto/:lottoID; params.bind: {lottoID: lotto}">go to ${lotto}</a>
+    </div>
   </div>
 </template>
-z

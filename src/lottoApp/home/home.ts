@@ -4,7 +4,7 @@ import FetchApi from '../../services/fetchApi';
 @autoinject
 export default class Home {
   public lottos: Array<string>;
-  public title: string = 'Select your game!';
+  public title: string = 'lottoApp';
   constructor( private fetchApi: FetchApi ) {
     }
 
