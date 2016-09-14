@@ -18,7 +18,7 @@ export default class Statistics {
         .subscribe(this.lottoRouterData.bind(this));
   }
 
-  private lottoRouterData(data) {
+  private lottoRouterData(data: LottoModel) {
     console.log(data, 'bindingEngine')
     this.raffleType = data;
   }
