@@ -52,6 +52,24 @@ a {
       margin: 45px 0;
     }
   }
+
+  .homeLottoPage{
+    &__lastResult {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      .toggle .handle {
+        width: 18px;
+        height: 19px;
+        top: 8px;
+        left: 5px;
+      }
+      .toggle .track {
+        width: 40px;
+        height: 25px;
+      }
+    }
+  }
 }
 
 .active {

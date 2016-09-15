@@ -53,6 +53,21 @@ a {
 .wrapper .homePage__raffle {
   margin: 45px 0;
 }
+.wrapper .homeLottoPage__lastResult {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.wrapper .homeLottoPage__lastResult .toggle .handle {
+  width: 18px;
+  height: 19px;
+  top: 8px;
+  left: 5px;
+}
+.wrapper .homeLottoPage__lastResult .toggle .track {
+  width: 40px;
+  height: 25px;
+}
 
 .active {
   color: #23527c !important;

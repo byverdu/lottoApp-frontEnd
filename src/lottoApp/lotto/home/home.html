@@ -1,10 +1,29 @@
 <template>
-  <h1>hello ${raffleType.lottoID}</h1>
-  <h3>most repeated: ${raffleType.mostRepeated}</h3>
-  <p>:)>>>)>${raffleType.randomBalls || 'upss'}</p>
-  <h3>count: ${raffleType.totalBalls}</h3>
-  <button click.trigger="getRandomBallsByLotto()">generate random values</button>
-  <p>Results saved: ${raffleType.combinations.length || 'upss'} </p>
+  <div class="homeLottoPage">
+    <div class="card">
+      <div class="item item-divider">
+        <h3>Last Result</h3>
+        <span class="homeLottoPage__lastResult">
+          <span class="homeLottoPage__lastResult--text">${showHideString}</span>
+          <label class="toggle toggle-positive">
+            <input
+              checked.bind="toggleLastResult"
+              type="checkbox"
+              onchange.bind="isToggledLastResult"
+              value.bind="toggleLastResult"
+            >
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </span>
+      </div>
+      <div class="item item-text-wrap">
+        ${raffleType.mostRepeated}
+      </div>
+    </div>
+    <button click.trigger="getRandomBallsByLotto()">generate random values</button>
+    <p>Results saved: ${raffleType.combinations.length || 'upss'} </p>
     <hr>
     <ul style="display: inline-flex;list-style: none;">
       <li repeat.for="combi of combiToSave">
@@ -12,28 +31,29 @@
       </li>
     </ul>
     <button
-      disabled.bind="!(combiToSave.length === raffleType.countBalls)"
-      click.trigger="saveSelectedNumbers()"
-      name="button"
+    disabled.bind="!(combiToSave.length === raffleType.countBalls)"
+    click.trigger="saveSelectedNumbers()"
+    name="button"
     >Save
-    </button>
-    <button
-      disabled.bind="!(combiToSave.length > 0)"
-      click.trigger="clearAndUncheck()"
-      name="button"
-    >Clear
-    </button>
-  <ul style="list-style: none;">
-    <li repeat.for="ball of totalBalls">
-      ${ball.value}
-      <input
-        class="test"
-        type="checkbox"
-        change.delegate="addBallToCombiToSave(ball.value)"
-        value.bind="ball.value"
-        disabled.bind="(combiToSave.length === raffleType.countBalls)"
-        checked.bind="ball.isChecked"
-      />
-    </li>
-  </ul>
+  </button>
+  <button
+  disabled.bind="!(combiToSave.length > 0)"
+  click.trigger="clearAndUncheck()"
+  name="button"
+  >Clear
+</button>
+<ul style="list-style: none;">
+  <li repeat.for="ball of totalBalls">
+    ${ball.value}
+    <input
+    class="test"
+    type="checkbox"
+    change.delegate="addBallToCombiToSave(ball.value)"
+    value.bind="ball.value"
+    disabled.bind="(combiToSave.length === raffleType.countBalls)"
+    checked.bind="ball.isChecked"
+    />
+  </li>
+</ul>
+  </div>
 </template>
