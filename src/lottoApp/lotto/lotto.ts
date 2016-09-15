@@ -21,24 +21,36 @@ export default class LottoRouter {
         route: '',
         title: 'home',
         moduleId: './home/home',
+        settings: {
+          icon: 'ion-ios-home'
+        },
         nav: true
       },
       {
         route: 'results/',
         title: 'Results',
         moduleId: './results/results',
+        settings: {
+          icon: 'ion-ios-heart'
+        },
         nav: true
       },
       {
         route: 'statistics/',
         title: 'Stats',
         moduleId: './statistics/statistics',
+        settings: {
+          icon: 'ion-ios-pie'
+        },
         nav: true
       },
       {
         route: 'winners/',
         title: 'Winners',
         moduleId: './winners/winners',
+        settings: {
+          icon: 'ion-ios-world'
+        },
         nav: true
       }
     ]);
@@ -56,7 +68,7 @@ export default class LottoRouter {
   }
 
   public activate(params, routeConfig: RouterConfiguration, instruction: NavigationInstruction) {
-    console.log(params,routeConfig, instruction,'args setLottoProps')
+    console.log(params,routeConfig, instruction, this.router, 'activate lotto')
     const lottoID = params.lottoID;
     this.fetchApi.chooseFetchMethod( lottoID )
       .then( response => {
