@@ -33,6 +33,10 @@ export default class Results {
 
   public compareLastResultWithSaved() {
     const lastResultNumbers = this.raffleType.lastResultNumbers;
+    const combinations = this.combinations;
+    if (lastResultNumbers === undefined || combinations === undefined) {
+      return;
+    }
     this.combinations.forEach((combi) => {
       combi.forEach((item, index) => {
         if( lastResultNumbers.indexOf(item.value) !== -1 ) {
@@ -44,6 +48,9 @@ export default class Results {
   }
 
   public clearCompared() {
+    if (this.combinations === undefined) {
+      return;
+    }
     this.combinations.forEach((item) => {
       item.forEach((item2, index) => {
         item2.isMatched = false;
@@ -52,7 +59,10 @@ export default class Results {
   }
 
   private setCombinations(raffleType) {
+    console.log(raffleType, 'error error')
     return raffleType.combinations.map((combi) => {
+      console.log(combi, 'error  combinationserror')
+
       return combi.map((item, index) => {
         return {
           isMatched:false,

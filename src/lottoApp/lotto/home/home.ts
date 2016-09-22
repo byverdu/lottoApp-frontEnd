@@ -12,7 +12,7 @@ export default class Home {
   public totalBalls = [];
   public subscriber: Disposable;
   public toggleLastResult: boolean = true;
-  public showHideString: string;
+  public showHideString: string = 'Hide';
   constructor (
     private fetchApi: FetchApi,
     private lottoUtils: LottoUtils,
@@ -24,20 +24,16 @@ export default class Home {
     this.subscriber = this.bindingEngine
       .propertyObserver(this.lottoRouter, 'raffleType')
       .subscribe(this.lottoRouterData.bind(this));
-      this.showHideString = this.toggleLastResult ? 'Hide' : 'Show';
   }
 
   public deactivate(){
     this.subscriber.dispose();
   }
 
-  public isToggledLastResult() {
-    if(this.toggleLastResult === false) {
-      this.toggleLastResult = true;
-    }
-    this.toggleLastResult = false;
+  public isToggledLastResult(toggleLastResult) {
+    console.log(toggleLastResult,'toggleLastResult')
+    this.toggleLastResult = toggleLastResult ? true : false;
     this.showHideString = this.toggleLastResult ? 'Hide' : 'Show';
-    console.log(this.toggleLastResult,this.showHideString,'skkskskskskskkskss')
   }
 
   public addBallToCombiToSave(ball: string) {

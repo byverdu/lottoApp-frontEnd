@@ -9,8 +9,7 @@
             <input
               checked.bind="toggleLastResult"
               type="checkbox"
-              onchange.bind="isToggledLastResult"
-              value.bind="toggleLastResult"
+              change.delegate="isToggledLastResult(toggleLastResult)"
             >
             <div class="track">
               <div class="handle"></div>
@@ -18,7 +17,7 @@
           </label>
         </span>
       </div>
-      <div class="item item-text-wrap">
+      <div if.bind="toggleLastResult" class="item item-text-wrap">
         ${raffleType.mostRepeated}
       </div>
     </div>
