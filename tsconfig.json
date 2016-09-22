@@ -37,6 +37,7 @@
     "./src/lottoApp/home/home.ts",
     "./src/lottoApp/lotto/home/home.ts",
     "./src/lottoApp/lotto/lotto.ts",
+    "./src/lottoApp/lotto/partials/last-result-card.ts",
     "./src/lottoApp/lotto/results/results.ts",
     "./src/lottoApp/lotto/statistics/statistics.ts",
     "./src/lottoApp/lotto/winners/winners.ts",

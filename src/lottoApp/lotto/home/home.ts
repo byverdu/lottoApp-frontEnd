@@ -11,8 +11,6 @@ export default class Home {
   public combiToSave: Array<number> = [];
   public totalBalls = [];
   public subscriber: Disposable;
-  public toggleLastResult: boolean = true;
-  public showHideString: string = 'Hide';
   constructor (
     private fetchApi: FetchApi,
     private lottoUtils: LottoUtils,
@@ -28,12 +26,6 @@ export default class Home {
 
   public deactivate(){
     this.subscriber.dispose();
-  }
-
-  public isToggledLastResult(toggleLastResult) {
-    console.log(toggleLastResult,'toggleLastResult')
-    this.toggleLastResult = toggleLastResult ? true : false;
-    this.showHideString = this.toggleLastResult ? 'Hide' : 'Show';
   }
 
   public addBallToCombiToSave(ball: string) {

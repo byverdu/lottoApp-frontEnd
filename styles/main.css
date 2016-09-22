@@ -100,6 +100,7 @@ input[type="checkbox"] {
 }
 .homeLottoPage__item {
   display: inline-block;
+  position: relative;
 }
 .homeLottoPage__item--label {
   position: absolute;
@@ -115,8 +116,7 @@ input[type="checkbox"] {
   top: 6px;
   left: 12px;
 }
-
-.ball {
+.homeLottoPage__ball {
   display: block;
   background: black;
   margin: 0;
@@ -124,14 +124,13 @@ input[type="checkbox"] {
   height: 35px;
   width: 35px;
 }
-.ball--unactive {
+.homeLottoPage__ball--unactive {
   background: radial-gradient(circle at 16px 16px, #5cabff, #4c4c4c);
 }
-.ball--active {
+.homeLottoPage__ball--active {
   background: radial-gradient(circle at 16px 16px, red, #4c4c4c);
 }
-
-.ball .shadow {
+.homeLottoPage__ball .homeLottoPage__shadow {
   position: absolute;
   left: -4px;
   top: -4px;
@@ -141,10 +140,15 @@ input[type="checkbox"] {
   transform: rotateX(80deg) translateZ(-18px);
   z-index: -1;
 }
-
-.stage {
+.homeLottoPage__stage {
   width: 40px;
   height: 50px;
   perspective: 1200px;
   perspective-origin: 50% 50%;
+}
+.homeLottoPage__combi {
+  position: absolute;
+  top: 7px;
+  color: white;
+  left: 10px;
 }
