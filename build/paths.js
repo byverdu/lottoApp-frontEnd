@@ -7,6 +7,7 @@ module.exports = {
   source: appRoot + '**/*.ts',
   html: appRoot + '**/*.html',
   sass: './scss/main.scss',
+  sassWatch: './scss/**/*.scss',
   css: appRoot + '**/*.css',
   style: 'styles/**/*.css',
   output: outputRoot,

@@ -41,17 +41,30 @@
   name="button"
   >Clear
 </button>
-<ul style="list-style: none;">
-  <li repeat.for="ball of totalBalls">
-    ${ball.value}
-    <input
-    class="test"
-    type="checkbox"
-    change.delegate="addBallToCombiToSave(ball.value)"
-    value.bind="ball.value"
-    disabled.bind="(combiToSave.length === raffleType.countBalls)"
-    checked.bind="ball.isChecked"
-    />
+<ul class="homeLottoPage__list">
+  <li class="homeLottoPage__item" repeat.for="ball of totalBalls">
+    <section class="stage">
+      <figure
+        class="ball ${ball.isChecked ? 'ball--active' : 'ball--unactive'}"
+      >
+        <span class="shadow"></span>
+      </figure>
+      <input
+        id="id${ball.value}"
+        type="checkbox"
+        change.delegate="addBallToCombiToSave(ball.value)"
+        value.bind="ball.value"
+        disabled.bind="(combiToSave.length === raffleType.countBalls)"
+        checked.bind="ball.isChecked"
+      />
+      <label
+        class="homeLottoPage__item--label"
+        for="id${ball.value}">
+        <span class="homeLottoPage__item--number">
+          ${ball.value}
+        </span>
+      </label>
+    </section>
   </li>
 </ul>
   </div>
