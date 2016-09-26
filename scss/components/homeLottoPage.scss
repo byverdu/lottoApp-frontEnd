@@ -1,5 +1,5 @@
 .homeLottoPage {
-  &__lastResult {
+  &__mostRepeated {
     position: absolute;
     top: 5px;
     right: 10px;
@@ -85,7 +85,7 @@
     perspective-origin: 50% 50%;
   }
 
-  &__combiToSave {
+  &__cardBalls {
     &--combi {
       position: absolute;
       top: 7px;

@@ -75,23 +75,23 @@ input[type="checkbox"] {
   margin: 45px 0;
 }
 
-.homeLottoPage__lastResult {
+.homeLottoPage__mostRepeated {
   position: absolute;
   top: 5px;
   right: 10px;
 }
-.homeLottoPage__lastResult--text {
+.homeLottoPage__mostRepeated--text {
   position: relative;
   top: -5px;
   right: 10px;
 }
-.homeLottoPage__lastResult .toggle .handle {
+.homeLottoPage__mostRepeated .toggle .handle {
   width: 18px;
   height: 19px;
   top: 8px;
   left: 5px;
 }
-.homeLottoPage__lastResult .toggle .track {
+.homeLottoPage__mostRepeated .toggle .track {
   width: 40px;
   height: 25px;
 }
@@ -155,14 +155,14 @@ input[type="checkbox"] {
   perspective: 1200px;
   perspective-origin: 50% 50%;
 }
-.homeLottoPage__combiToSave--combi {
+.homeLottoPage__cardBalls--combi {
   position: absolute;
   top: 7px;
   color: white;
   width: 20px;
   left: 10px;
 }
-.homeLottoPage__combiToSave .homeLottoPage__stage {
+.homeLottoPage__cardBalls .homeLottoPage__stage {
   height: 35px;
 }
 .homeLottoPage .item .badge {

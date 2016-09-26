@@ -9,6 +9,7 @@ import LottoRouter from '../lotto';
 export default class Home {
   public raffleType: LottoModel;
   public combiToSave: Array<number> = [];
+  public mostRepeated: Array<number> = [];
   public totalBalls = [];
   public subscriber: Disposable;
   constructor (
@@ -64,6 +65,7 @@ export default class Home {
   private lottoRouterData(data: LottoModel) {
     console.log(data, 'bindingEngine')
     this.raffleType = data;
+    this.mostRepeated = this.lottoUtils.stringsToNumbers(this.raffleType.mostRepeated);
     const totalBalls: number = this.raffleType.totalBalls;
     for (let counter = 1; counter <= totalBalls; counter++) {
       this.totalBalls.push(
