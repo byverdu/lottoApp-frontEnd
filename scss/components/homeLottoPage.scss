@@ -22,11 +22,19 @@
 
   &__list {
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
   }
 
   &__item {
     display: inline-block;
     position: relative;
+    margin: 0 auto;
+
+    &:last-child {
+      margin-left: 0;
+    }
 
     &--label {
       position: absolute;
@@ -71,16 +79,34 @@
     z-index: -1;
   }
   &__stage {
-    width: 40px;
+    width: 36px;
     height: 50px;
     perspective: 1200px;
     perspective-origin: 50% 50%;
   }
 
-  &__combi {
-    position: absolute;
-    top: 7px;
-    color: white;
-    left: 10px;
+  &__combiToSave {
+    &--combi {
+      position: absolute;
+      top: 7px;
+      color: white;
+      width: 20px;
+      left: 10px;
+    }
+    .homeLottoPage__stage {
+      height: 35px;
+    }
+  }
+
+  // overwriting ionic
+  .item .badge {
+    right: 10px;
+  }
+  .item-note {
+    margin-right: 30px
+  }
+
+  .button-bar {
+    padding: 10px;
   }
 }

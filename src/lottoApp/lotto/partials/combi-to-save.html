@@ -1,0 +1,19 @@
+<template bindable="innerCombi">
+  <div class="card homeLottoPage__combiToSave">
+    <div class="item item-divider">
+      <h3>Your numbers</h3>
+    </div>
+    <div class="item item-body">
+      <ul class="homeLottoPage__list">
+        <li class="homeLottoPage__item" repeat.for="combi of innerCombi">
+          <section class="homeLottoPage__stage">
+            <figure class="homeLottoPage__ball homeLottoPage__ball--unactive">
+            </figure>
+          </section>
+          <span class="homeLottoPage__combiToSave--combi">${combi}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</template>
