@@ -1,6 +1,7 @@
 <template>
-  <require from="../partials/most-repeated-card"></require>
-  <require from="../partials/combi-to-save.html"></require>
+  <require from="../../partials/most-repeated-card"></require>
+  <require from="../../partials/combi-to-save.html"></require>
+  <require from="../../partials/tooltipAttr"></require>
   <div class="homeLottoPage">
     <most-repeated-card
       most-repeated.bind="mostRepeated">
@@ -50,6 +51,9 @@
 
     <div class="button-bar bar-positive">
       <button
+        tooltip-attr
+        data-toggle="tooltip"
+        data-title.bind="raffleType.countBalls"
         class="button"
         click.trigger="getRandomBallsByLotto()">
           Random values
