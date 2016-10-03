@@ -51,9 +51,8 @@
 
     <div class="button-bar bar-positive">
       <button
-        tooltip-attr
-        data-toggle="tooltip"
-        data-title.bind="raffleType.countBalls"
+        tooltip
+        data-original-title.bind="raffleType.countBalls"
         class="button"
         click.trigger="getRandomBallsByLotto()">
           Random values

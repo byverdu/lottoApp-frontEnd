@@ -1,9 +1,8 @@
 import { customAttribute, autoinject, bindable } from 'aurelia-framework';
 
 @autoinject
-@customAttribute('tooltip-attr')
+@customAttribute('tooltip')
 export class TooltipAttr {
-   @bindable title:string;
   constructor(private element: Element) {
   }
 
