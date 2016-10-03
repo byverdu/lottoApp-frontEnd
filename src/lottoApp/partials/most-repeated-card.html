@@ -16,7 +16,7 @@
         </label>
       </span>
     </div>
-    <div if.bind="toggleMostRepeated" class="item">
+    <div class="item ${toggleMostRepeated ? 'isExpanded' : 'isCollapsed'}">
       <ul class="homeLottoPage__list homeLottoPage__cardBalls">
         <li class="homeLottoPage__item" repeat.for="combi of mostRepeated">
           <section class="homeLottoPage__stage">
