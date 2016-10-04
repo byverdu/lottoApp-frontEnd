@@ -12,4 +12,7 @@ export class LastResultCard {
     this.toggleMostRepeated = toggleMostRepeated ? true : false;
     this.showHideString = this.toggleMostRepeated ? 'Hide' : 'Show';
   }
+  public addStringZero(ball) {
+    return ball <= 9 ? `0${ball}` : ball;
+  }
 }

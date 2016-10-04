@@ -3,22 +3,23 @@ import FetchApi from '../../../services/fetchApi';
 import LottoUtils from '../../../services/lottoUtils';
 import WindowStorage from '../../../services/windowStorage';
 import { LottoModel } from '../../../models/LottoModel';
+import { BallModel } from '../../../models/BallModel';
 import LottoRouter from '../lotto';
 
 @autoinject
 export default class Home {
   public raffleType: LottoModel;
-  public combiToSave: Array<number> = [];
+  public combiToSave: Array<BallModel> = [];
   public mostRepeated: Array<number> = [];
-  public totalBalls = [];
+  public totalBalls: Array<BallModel> = [];
   public subscriber: Disposable;
+  public tooltip: any;
   constructor (
     private fetchApi: FetchApi,
     private lottoUtils: LottoUtils,
     private windowStorage: WindowStorage,
     private lottoRouter: LottoRouter,
-    private bindingEngine: BindingEngine,
-    private element: Element
+    private bindingEngine: BindingEngine
   ) {
     this.subscriber = this.bindingEngine
       .propertyObserver(this.lottoRouter, 'raffleType')
@@ -29,27 +30,33 @@ export default class Home {
     this.subscriber.dispose();
   }
 
-  public addBallToCombiToSave(ball: string) {
-    const toNumber = Number(ball);
-    const numberConverted: number = toNumber;
-    const indexChecked = this.combiToSave.indexOf(numberConverted);
+  public addBallToCombiToSave(ball) {
+    const numberConverted: number = Number(ball.value);
+    const ballValues: Array<number> = this.getBallValues();
+    const lastZeroItem: number = ballValues.lastIndexOf(0);
+    const indexChecked: number = ballValues.indexOf(numberConverted);
 
-    if (this.combiToSave.indexOf(numberConverted) === -1) {
-      this.combiToSave.push(numberConverted);
-      this.combiToSave.sort(( a, b ) => a - b );
+    if (indexChecked === -1) {
+      const tempObject = {
+        value: ball.value,
+        isChecked: ball.isChecked
+      }
+      Object.assign(this.combiToSave[lastZeroItem], tempObject);
+      this.combiToSave.sort((a,b) => a.value - b.value)
     } else {
-      this.combiToSave.splice(indexChecked, 1);
+      this.combiToSave.splice(indexChecked, 1, new BallModel(0));
+      this.combiToSave.sort((a,b) => a.value - b.value)
     }
   }
 
   public clearAndUncheck() {
-    console.log(this.element, 'balllllllllll')
-    this.combiToSave = [];
+    this.combiToSave = this.setArrayForBall(this.raffleType.countBalls, false);
     this.totalBalls.forEach(ball => ball.isChecked = false)
   }
 
   public saveSelectedNumbers() {
-    this.windowStorage.setWindowStorage(this.raffleType.lottoID, this.combiToSave);
+    const ballValues: Array<number> = this.getBallValues();
+    this.windowStorage.setWindowStorage(this.raffleType.lottoID, ballValues);
     console.log(this.raffleType, 'saveSelectedNumbers');
     this.setCombinations();
     this.clearAndUncheck();
@@ -62,33 +69,43 @@ export default class Home {
     console.log(this.combiToSave, 'getRandomBallsByLotto');
   }
 
-  private lottoRouterData(data: LottoModel) {
-    console.log(data, 'bindingEngine')
-    this.raffleType = data;
-    this.mostRepeated = this.lottoUtils.stringsToNumbers(this.raffleType.mostRepeated);
-    const totalBalls: number = this.raffleType.totalBalls;
-    for (let counter = 1; counter <= totalBalls; counter++) {
-      this.totalBalls.push(
-        {
-          isChecked: false,
-          value: counter
-        }
-      )
-    }
+  public addStringZero(ball) {
+    return ball <= 9 ? `0${ball}` : ball;
+  }
 
-    console.log(this.totalBalls, 'lottoRouterData totalBalls')
-    return this.totalBalls;
+  private lottoRouterData(data: LottoModel) {
+    // console.log(data, 'bindingEngine')
+    this.raffleType = data;
+    this.mostRepeated = this.lottoUtils.stringsToNumbers(data.mostRepeated);
+    this.combiToSave = this.setArrayForBall(data.countBalls, false);
+    this.totalBalls = this.setArrayForBall(data.totalBalls, true);
   }
 
   private setCombinations() {
     this.raffleType.combinations = this.windowStorage.getWindowStorage( this.raffleType.lottoID );
   }
 
-  private checkAfterRandValues(totalBalls: Array<any>, combiToSave: Array<number>): void {
+  private checkAfterRandValues(totalBalls: Array<BallModel>, combiToSave: Array<BallModel>): void {
+    const ballValues: Array<number> = this.getBallValues();
     totalBalls.forEach(ball => {
-      if(combiToSave.indexOf(ball.value) !== -1 ) {
+      if(ballValues.indexOf(ball.value) !== -1 ) {
         ball.isChecked = true;
       }
     })
+  }
+
+  private getBallValues(): Array<number> {
+    return this.combiToSave.map(combi => combi.value );
+  }
+
+  private setArrayForBall(ballCount: number, checker: boolean): Array<BallModel> {
+    const tempArray = [];
+    for (let counter = 1; counter <= ballCount; counter++) {
+      const isToCount: number = checker ? counter : 0;
+      tempArray.push(
+        new BallModel(isToCount)
+      )
+    }
+    return tempArray;
   }
 }

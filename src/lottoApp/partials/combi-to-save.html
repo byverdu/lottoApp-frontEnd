@@ -1,4 +1,4 @@
-<template bindable="innerCombi">
+<template bindable="innerCombi, addZero">
   <div class="card homeLottoPage__cardBalls">
     <div class="item item-divider">
       <h3>Your numbers</h3>
@@ -10,7 +10,9 @@
             <figure class="homeLottoPage__ball homeLottoPage__ball--unactive">
             </figure>
           </section>
-          <span class="homeLottoPage__cardBalls--combi">${combi.initial}</span>
+          <span class="homeLottoPage__cardBalls--combi">
+            ${combi.value > 0 ? addZero(combi.value) : ''}
+          </span>
         </li>
       </ul>
     </div>

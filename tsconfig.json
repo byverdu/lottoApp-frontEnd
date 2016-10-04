@@ -31,6 +31,7 @@
   "files": [
     "./src/app.ts",
     "./src/blur-image.ts",
+    "./src/interfaces/BallInterface.ts",
     "./src/interfaces/FetchInterface.ts",
     "./src/interfaces/LottoInterface.ts",
     "./src/interfaces/WindowStoreInterface.ts",
@@ -44,6 +45,7 @@
     "./src/lottoApp/partials/most-repeated-card.ts",
     "./src/lottoApp/partials/tooltipAttr.ts",
     "./src/main.ts",
+    "./src/models/BallModel.ts",
     "./src/models/LottoModel.ts",
     "./src/services/fetchApi.ts",
     "./src/services/httpRequestInterceptor.ts",

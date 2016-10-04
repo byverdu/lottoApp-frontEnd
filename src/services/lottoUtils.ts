@@ -1,4 +1,5 @@
 import { LottoModel } from '../models/LottoModel';
+import { BallModel } from '../models/BallModel';
 
 export default class LottoUtils {
   public getTotalBalls( lottoID: string ): number {
@@ -18,19 +19,20 @@ export default class LottoUtils {
     return config[ lottoID ];
   }
 
-  public getRandomBallsByLotto( raffleType: LottoModel): Array<number> {
+  public getRandomBallsByLotto( raffleType: LottoModel): Array<BallModel> {
     const result = [];
 
-    console.log(raffleType.countBalls,raffleType.totalBalls, 'result getRandomBallsByLotto')
     while( result.length < raffleType.countBalls ) {
+      const valuesSaved = result.map( item => item.value);
+      console.log(valuesSaved, 'result getRandomBallsByLotto')
 
       const randomValue: number = Math.floor(Math.random()*raffleType.totalBalls) + 1;
-      if ( result.indexOf(randomValue) === -1 ) {
-        result.push(randomValue);
+      if ( valuesSaved.indexOf(randomValue) === -1 ) {
+        result.push(new BallModel(randomValue));
       }
     }
     console.log(result, 'result getRandomBallsByLotto')
-    return result.sort(( a, b ) => a - b );
+    return result.sort(( a, b ) => a.value - b.value );
   }
 
   public stringsToNumbers(singleString: string): Array<number> {
