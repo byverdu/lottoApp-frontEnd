@@ -1,17 +1,5 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: orange;
-}
-.green, .greenItem {
-  color: green;
-}
-.purple, .redItem {
-  color: purple;
-}
-.orangeItem {
-  color: orange;
-}
+@import "./components/global";
+@import "./components/wrapper";
+@import "./components/homePage";
+@import "./components/homeLottoPage";

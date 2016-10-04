@@ -1,0 +1,80 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.green, .greenItem {
+  color: green;
+}
+.purple, .redItem {
+  color: purple;
+}
+.orangeItem {
+  color: orange;
+}
+
+.active {
+  color: #23527c !important;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 120px;
+  width: 82%;
+  z-index: 5;
+}
+
+.fixed-top {
+  position: fixed !important;
+    top: 108px !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.isExpanded {
+  height: 70px;
+  opacity: 1;
+  position: relative;
+}
+
+.isCollapsed {
+  animation: collapse .5s 1;
+  -webkit-animation-fill-mode: forwards;
+}
+
+// Animations
+@keyframes collapse {
+  0% {
+    opacity: 0.8;
+    height: 50px;
+  }
+  25% {
+    opacity: 0.6;
+    height: 36px;
+  }
+  50% {
+    opacity: 0.4;
+    height: 15px;
+  }
+  75% {
+    opacity: 0.2;
+    height: 5px;
+  }
+  90% {
+    position: relative;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+  }
+}

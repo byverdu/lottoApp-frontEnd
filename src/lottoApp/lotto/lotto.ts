@@ -4,6 +4,7 @@ import FetchApi from '../../services/fetchApi';
 import LottoUtils from '../../services/lottoUtils';
 import WindowStorage from '../../services/windowStorage';
 import { LottoModel } from '../../models/LottoModel';
+import { AppRouter } from '../../app';
 
 @autoinject
 export default class LottoRouter {
@@ -12,7 +13,8 @@ export default class LottoRouter {
   constructor(
     private fetchApi: FetchApi,
     private windowStorage: WindowStorage,
-    private lottoUtils: LottoUtils
+    private lottoUtils: LottoUtils,
+    private appRouter: AppRouter
   ) {
   }
   configureRouter( config: RouterConfiguration, router: Router ) {
@@ -21,24 +23,36 @@ export default class LottoRouter {
         route: '',
         title: 'home',
         moduleId: './home/home',
+        settings: {
+          icon: 'ion-ios-home'
+        },
         nav: true
       },
       {
         route: 'results/',
         title: 'Results',
         moduleId: './results/results',
+        settings: {
+          icon: 'ion-ios-heart'
+        },
         nav: true
       },
       {
         route: 'statistics/',
         title: 'Stats',
         moduleId: './statistics/statistics',
+        settings: {
+          icon: 'ion-ios-pie'
+        },
         nav: true
       },
       {
         route: 'winners/',
         title: 'Winners',
         moduleId: './winners/winners',
+        settings: {
+          icon: 'ion-ios-world'
+        },
         nav: true
       }
     ]);
@@ -56,8 +70,10 @@ export default class LottoRouter {
   }
 
   public activate(params, routeConfig: RouterConfiguration, instruction: NavigationInstruction) {
-    console.log(params,routeConfig, instruction,'args setLottoProps')
-    const lottoID = params.lottoID;
+    console.log(params,routeConfig, instruction, this.appRouter, 'activate lotto')
+    const lottoID: string = params.lottoID;
+    const lottoAppName: string = this.appRouter.title.concat(` - ${lottoID}`);
+    this.appRouter.title = lottoAppName;
     this.fetchApi.chooseFetchMethod( lottoID )
       .then( response => {
         const data = response[ lottoID ]
@@ -75,6 +91,10 @@ export default class LottoRouter {
           lastResultNumbers
         );
       });
+    }
+
+    public deactivate() {
+      this.appRouter.title = 'lottoApp';
     }
 
     public determineActivationStrategy() {

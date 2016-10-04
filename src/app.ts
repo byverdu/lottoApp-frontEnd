@@ -1,7 +1,8 @@
 import {Router, RouterConfiguration} from 'aurelia-router';
 
-export class App {
+export class AppRouter {
   router: Router;
+  public title: string = 'lottoApp';;
 
   configureRouter(config: RouterConfiguration, router: Router) {
     config.map([

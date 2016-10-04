@@ -1,10 +1,12 @@
 <template>
-  <!-- <require from="nav-bar.html"></require>
-  <require from="bootstrap/css/bootstrap.css"></require>
-
-  <nav-bar router.bind="router"></nav-bar> -->
-
-  <div class="page-host">
-    <router-view></router-view>
+  <div class="wrapper">
+    <div class="wrapper__page">
+      <div class="bar bar-header bar-positive fixed-top">
+        <h1 class="title">${title}</h1>
+      </div>
+      <div class="wrapper__content">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>

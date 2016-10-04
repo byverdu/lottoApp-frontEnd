@@ -1,0 +1,112 @@
+.homeLottoPage {
+  &__mostRepeated {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    &--text {
+      position: relative;
+      top: -5px;
+      right: 10px;
+    }
+    .toggle .handle {
+      width: 18px;
+      height: 19px;
+      top: 8px;
+      left: 5px;
+    }
+    .toggle .track {
+      width: 40px;
+      height: 25px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
+
+    &:last-child {
+      margin-left: 0;
+    }
+
+    &--label {
+      position: absolute;
+      color: white;
+      top: 0;
+      left: 0;
+      width: 45px;
+      height: 45px;
+    }
+
+    &--number {
+      font-size: 16px;
+      position: relative;
+      top: 6px;
+      left: 12px;
+    }
+  }
+  &__ball {
+    display: block;
+    background: black;
+    margin: 0;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+
+    &--unactive {
+      background: radial-gradient(circle at 16px 16px,#5cabff,#4c4c4c);
+    }
+
+    &--active {
+      background: radial-gradient(circle at 16px 16px,red,#4c4c4c);
+    }
+  }
+  &__ball &__shadow {
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+    transform: rotateX(80deg) translateZ(-18px);
+    z-index: -1;
+  }
+  &__stage {
+    width: 36px;
+    height: 50px;
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+  }
+
+  &__cardBalls {
+    &--combi {
+      position: absolute;
+      top: 7px;
+      color: white;
+      width: 20px;
+      left: 10px;
+    }
+    .homeLottoPage__stage {
+      height: 35px;
+    }
+  }
+
+  // overwriting ionic
+  .item .badge {
+    right: 10px;
+  }
+  .item-note {
+    margin-right: 30px
+  }
+
+  .button-bar {
+    padding: 10px;
+  }
+}

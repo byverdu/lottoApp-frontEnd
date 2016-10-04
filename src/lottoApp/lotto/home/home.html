@@ -1,39 +1,78 @@
 <template>
-  <h1>hello ${raffleType.lottoID}</h1>
-  <h3>most repeated: ${raffleType.mostRepeated}</h3>
-  <p>:)>>>)>${raffleType.randomBalls || 'upss'}</p>
-  <h3>count: ${raffleType.totalBalls}</h3>
-  <button click.trigger="getRandomBallsByLotto()">generate random values</button>
-  <p>Results saved: ${raffleType.combinations.length || 'upss'} </p>
-    <hr>
-    <ul style="display: inline-flex;list-style: none;">
-      <li repeat.for="combi of combiToSave">
-        ${combi}-
+  <require from="../../partials/most-repeated-card"></require>
+  <require from="../../partials/combi-to-save.html"></require>
+  <require from="../../partials/tooltipAttr"></require>
+  <div class="homeLottoPage">
+    <most-repeated-card
+      most-repeated.bind="mostRepeated">
+    </most-repeated-card>
+
+    <div class="card">
+      <div class="item item-divider">
+        <h3>
+          Select your combination
+          <span class="item-note">Saved:</span>
+          <span class="badge badge-positive">
+            ${raffleType.combinations.length || 0}
+          </span>
+        </h3>
+      </div>
+      <div class="item item-body">
+        <ul class="homeLottoPage__list">
+          <li class="homeLottoPage__item" repeat.for="ball of totalBalls">
+            <section class="homeLottoPage__stage">
+              <figure
+              class="homeLottoPage__ball homeLottoPage__ball${ball.isChecked ? '--active' : '--unactive'}"
+              >
+              <span class="homeLottoPage__shadow"></span>
+            </figure>
+            <input
+            id="id${ball.value}"
+            type="checkbox"
+            change.delegate="addBallToCombiToSave(ball)"
+            value.bind="ball.value"
+            checked.bind="ball.isChecked"
+            />
+            <label
+            class="homeLottoPage__item--label"
+            for="id${ball.value}">
+            <span class="homeLottoPage__item--number">
+              ${addStringZero(ball.value)}
+            </span>
+          </label>
+        </section>
       </li>
     </ul>
-    <button
-      disabled.bind="!(combiToSave.length === raffleType.countBalls)"
-      click.trigger="saveSelectedNumbers()"
-      name="button"
-    >Save
-    </button>
-    <button
-      disabled.bind="!(combiToSave.length > 0)"
-      click.trigger="clearAndUncheck()"
-      name="button"
-    >Clear
-    </button>
-  <ul style="display: inline-flex;list-style: none;">
-    <li repeat.for="ball of totalBalls">
-      ${ball.value}
-      <input
-        class="test"
-        type="checkbox"
-        change.delegate="addBallToCombiToSave(ball.value)"
-        value.bind="ball.value"
-        disabled.bind="(combiToSave.length === raffleType.countBalls)"
-        checked.bind="ball.isChecked"
-      />
-    </li>
-  </ul>
+      </div>
+    </div>
+    <combi-to-save
+      inner-combi.bind="combiToSave"
+      add-zero.bind="addStringZero">
+    </combi-to-save>
+
+    <div class="button-bar bar-positive">
+      <button
+        tooltip
+        data-original-title.bind="raffleType.countBalls"
+        class="button"
+        click.trigger="getRandomBallsByLotto()">
+          Random values
+      </button>
+      <button
+        class="button"
+        disabled.bind="!(combiToSave.length === raffleType.countBalls)"
+        click.trigger="saveSelectedNumbers()">
+        Save
+      </button>
+      <button
+        class="button"
+        disabled.bind="!(combiToSave.length > 0)"
+        click.trigger="clearAndUncheck()">
+        Clear
+      </button>
+    </div>
+
+
+
+  </div>
 </template>
