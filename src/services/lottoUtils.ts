@@ -24,9 +24,8 @@ export default class LottoUtils {
 
     while( result.length < raffleType.countBalls ) {
       const valuesSaved = result.map( item => item.value);
-      console.log(valuesSaved, 'result getRandomBallsByLotto')
-
       const randomValue: number = Math.floor(Math.random()*raffleType.totalBalls) + 1;
+
       if ( valuesSaved.indexOf(randomValue) === -1 ) {
         result.push(new BallModel(randomValue));
       }

@@ -25,6 +25,18 @@ body {
   width: 82%;
   z-index: 5;
 }
+.fixed .icon {
+  position: relative;
+  top: -7px;
+}
+.fixed .tabs-title {
+  position: relative;
+  top: -17px;
+}
+.fixed a:hover,
+.fixed a:focus {
+  text-decoration: none;
+}
 
 .fixed-top {
   position: fixed !important;
@@ -162,7 +174,7 @@ input[type="checkbox"] {
   font-size: 16px;
   position: relative;
   top: 6px;
-  left: 12px;
+  left: 9px;
 }
 .homeLottoPage__ball {
   display: block;
@@ -199,7 +211,7 @@ input[type="checkbox"] {
   top: 7px;
   color: white;
   width: 20px;
-  left: 10px;
+  left: 9px;
 }
 .homeLottoPage__cardBalls .homeLottoPage__stage {
   height: 35px;

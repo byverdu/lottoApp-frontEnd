@@ -21,7 +21,7 @@ export default class LottoRouter {
     config.map([
       {
         route: '',
-        title: 'home',
+        title: 'Home',
         moduleId: './home/home',
         settings: {
           icon: 'ion-ios-home'
