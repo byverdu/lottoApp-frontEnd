@@ -13,7 +13,6 @@ export default class Home {
   public mostRepeated: Array<number> = [];
   public totalBalls: Array<BallModel> = [];
   public subscriber: Disposable;
-  public tooltip: any;
   constructor (
     private fetchApi: FetchApi,
     private lottoUtils: LottoUtils,
@@ -26,11 +25,21 @@ export default class Home {
       .subscribe(this.lottoRouterData.bind(this));
   }
 
+  public get getCountChecked(): number {
+    return this.totalBalls.filter(item => item.isChecked).length;
+  }
+
   public deactivate(){
     this.subscriber.dispose();
   }
 
   public addBallToCombiToSave(ball) {
+    if (this.getCountChecked > this.raffleType.countBalls) {
+      const arrIndex: number = ball.value-1;
+      this.totalBalls[arrIndex].isChecked = false;
+      return;
+    }
+
     const numberConverted: number = Number(ball.value);
     const ballValues: Array<number> = this.getBallValues();
     const lastZeroItem: number = ballValues.lastIndexOf(0);
@@ -47,6 +56,7 @@ export default class Home {
       this.combiToSave.splice(indexChecked, 1, new BallModel(0));
       this.combiToSave.sort((a,b) => a.value - b.value)
     }
+    console.log(this.combiToSave,'addBallToCombiToSave')
   }
 
   public clearAndUncheck() {

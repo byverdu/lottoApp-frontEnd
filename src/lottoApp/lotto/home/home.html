@@ -62,7 +62,7 @@
         tooltip
         data-original-title="Save selected balls"
         class="button"
-        disabled.bind="!(combiToSave.length === raffleType.countBalls)"
+        disabled.bind="!(getCountChecked === raffleType.countBalls)"
         click.trigger="saveSelectedNumbers()">
         Save
       </button>
@@ -70,7 +70,7 @@
         tooltip
         data-original-title="Clear selected balls"
         class="button"
-        disabled.bind="!(combiToSave.length > 0)"
+        disabled.bind="!(getCountChecked > 0)"
         click.trigger="clearAndUncheck()">
         Clear
       </button>

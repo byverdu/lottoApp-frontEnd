@@ -27,7 +27,9 @@ export default class LottoUtils {
       const randomValue: number = Math.floor(Math.random()*raffleType.totalBalls) + 1;
 
       if ( valuesSaved.indexOf(randomValue) === -1 ) {
-        result.push(new BallModel(randomValue));
+        const ball = new BallModel(randomValue);
+        ball.isChecked = true;
+        result.push(ball);
       }
     }
     console.log(result, 'result getRandomBallsByLotto')
