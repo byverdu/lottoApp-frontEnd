@@ -236,6 +236,16 @@ input[type="checkbox"] {
   top: 6px;
   left: 9px;
 }
+.homeLottoPage__cardBalls--combi {
+  position: absolute;
+  top: 7px;
+  color: white;
+  width: 20px;
+  left: 9px;
+}
+.homeLottoPage__cardBalls .stage {
+  height: 35px;
+}
 .homeLottoPage .item .badge {
   right: 10px;
 }

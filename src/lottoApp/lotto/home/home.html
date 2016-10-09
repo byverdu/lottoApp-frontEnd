@@ -22,11 +22,11 @@
       <div class="item item-body">
         <ul class="homeLottoPage__list">
           <li class="homeLottoPage__item" repeat.for="ball of totalBalls">
-            <section class="homeLottoPage__stage">
+            <section class="stage">
               <figure
-              class="homeLottoPage__ball homeLottoPage__ball${ball.isChecked ? '--active' : '--unactive'}"
+              class="ball ball${ball.isChecked ? '--active' : '--unactive'}"
               >
-              <span class="homeLottoPage__shadow"></span>
+              <span class="shadow"></span>
             </figure>
             <input
               id="id${ball.value}"
