@@ -2,6 +2,7 @@ import { autoinject, BindingEngine, Disposable } from 'aurelia-framework';
 import { LottoModel } from '../../../models/LottoModel';
 import LottoUtils from '../../../services/lottoUtils';
 import LottoRouter from '../lotto';
+import { BallModel } from '../../../models/BallModel';
 
 @autoinject
 export default class Results {
@@ -11,22 +12,17 @@ export default class Results {
   constructor(
     private lottoUtils: LottoUtils,
     private lottoRouter: LottoRouter,
-    private bindingEngine: BindingEngine,
-    private element: Element
+    private bindingEngine: BindingEngine
   ) {
       this.subscriber = this.bindingEngine
         .propertyObserver(this.lottoRouter, 'raffleType')
         .subscribe(this.lottoRouterData.bind(this));
   }
 
-  public activate() {
-
-  }
-
   private lottoRouterData(data: LottoModel) {
     this.raffleType = data;
     console.log(data, 'bindingEngine')
-    this.combinations = this.setCombinations(this.raffleType);
+    this.combinations = data.combinations;
     console.log(this.combinations, 'xxxxxxxxxxxxxxxxx')
     return this.combinations;
   }
@@ -37,38 +33,22 @@ export default class Results {
     if (lastResultNumbers === undefined || combinations === undefined) {
       return;
     }
-    this.combinations.forEach((combi) => {
-      combi.forEach((item, index) => {
+    for (const index in this.combinations) {
+      this.combinations[index].forEach(item => {
         if( lastResultNumbers.indexOf(item.value) !== -1 ) {
-          item.isMatched = true;
+          item.isChecked = true;
           console.log(item.value,index, 'compareLastResultWithSaved')
         }
       })
-    })
+    }
   }
 
   public clearCompared() {
     if (this.combinations === undefined) {
       return;
     }
-    this.combinations.forEach((item) => {
-      item.forEach((item2, index) => {
-        item2.isMatched = false;
-      })
-    })
-  }
-
-  private setCombinations(raffleType) {
-    console.log(raffleType, 'error error')
-    return raffleType.combinations.map((combi) => {
-      console.log(combi, 'error  combinationserror')
-
-      return combi.map((item, index) => {
-        return {
-          isMatched:false,
-          value: item
-        }
-      });
-    });
+    for (const index in this.combinations) {
+      this.combinations[index].forEach(item => item.isChecked = false)
+    }
   }
 }

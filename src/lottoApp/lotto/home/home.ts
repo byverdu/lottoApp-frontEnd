@@ -73,11 +73,12 @@ export default class Home {
 
   public clearAndUncheck() {
     this.combiToSave = this.raffleType.countBalls;
-    this.totalBalls.forEach(ball => ball.isChecked = false)
+    this.totalBalls.forEach(ball => ball.isChecked = false);
   }
 
   public saveSelectedNumbers() {
-    this.windowStorage.setWindowStorage(this.raffleType.lottoID, this.getBallValues);
+    this.combiToSave.forEach(ball => ball.isChecked = false);
+    this.windowStorage.setWindowStorage(this.raffleType.lottoID, this.combiToSave);
     console.log(this.raffleType, 'saveSelectedNumbers');
     this.setCombinations();
     this.clearAndUncheck();
@@ -95,7 +96,6 @@ export default class Home {
   }
 
   private lottoRouterData(data: LottoModel) {
-    // console.log(data, 'bindingEngine')
     this.raffleType = data;
     this.mostRepeated = this.lottoUtils.stringsToNumbers(data.mostRepeated);
     this.totalBalls = this.setArrayForBall(data.totalBalls, true);
