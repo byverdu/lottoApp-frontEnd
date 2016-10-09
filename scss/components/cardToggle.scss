@@ -1,0 +1,48 @@
+.cardToggle {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  &__text {
+    position: relative;
+    top: -5px;
+    right: 10px;
+  }
+  .toggle .handle {
+    width: 18px;
+    height: 19px;
+    top: 8px;
+    left: 5px;
+  }
+  .toggle .track {
+    width: 40px;
+    height: 25px;
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+  &__cardBalls {
+    &--combi {
+      position: absolute;
+      top: 7px;
+      color: white;
+      width: 20px;
+      left: 9px;
+    }
+    .stage {
+      height: 35px;
+    }
+  }
+}

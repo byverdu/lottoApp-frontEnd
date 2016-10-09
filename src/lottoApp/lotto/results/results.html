@@ -1,4 +1,11 @@
 <template>
+  <require from="../../partials/card-toggle"></require>
+  <div class="resultsPage">
+    <card-toggle
+      card-balls.bind="raffleType.lastResultNumbers"
+      title="Last Result">
+    </card-toggle>
+  </div>
   <div class="combinations" repeat.for="combis of combinations">
     <span repeat.for="number of combis"><b class="number ${number.isChecked ? 'green' : 'purple'}">${number.value}-</b></span>
   </div>

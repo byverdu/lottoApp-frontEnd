@@ -1,11 +1,13 @@
 <template>
-  <require from="../../partials/most-repeated-card"></require>
+  <require from="../../partials/card-toggle"></require>
   <require from="../../partials/combi-to-save.html"></require>
   <require from="../../partials/tooltipAttr"></require>
+
   <div class="homeLottoPage">
-    <most-repeated-card
-      most-repeated.bind="mostRepeated">
-    </most-repeated-card>
+    <card-toggle
+      card-balls.bind="mostRepeated"
+      title="Most Repeated">
+    </card-toggle>
 
     <div class="card">
       <div class="item item-divider">
