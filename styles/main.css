@@ -255,3 +255,22 @@ input[type="checkbox"] {
 .homeLottoPage .button-bar {
   padding: 10px;
 }
+
+.resultsPage__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+}
+.resultsPage__item .stage {
+  margin: 0 auto;
+  height: 35px;
+}
+.resultsPage__item--combi {
+  position: absolute;
+  top: 7px;
+  color: white;
+  width: 20px;
+  left: 9px;
+}

@@ -99,7 +99,7 @@ export default class Home {
     this.raffleType = data;
     this.mostRepeated = this.lottoUtils.stringsToNumbers(data.mostRepeated);
     this.totalBalls = this.setArrayForBall(data.totalBalls, true);
-    this.combiToSave = data.countBalls;
+    this.combiToSave = this.setArrayForBall(data.countBalls, false);
   }
 
   private setCombinations() {
