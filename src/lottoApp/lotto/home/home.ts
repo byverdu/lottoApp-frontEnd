@@ -72,7 +72,7 @@ export default class Home {
   }
 
   public clearAndUncheck() {
-    this.combiToSave = this.raffleType.countBalls;
+    this.combiToSave = this.setArrayForBall(this.raffleType.countBalls, false);
     this.totalBalls.forEach(ball => ball.isChecked = false);
   }
 
