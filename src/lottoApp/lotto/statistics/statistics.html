@@ -1,8 +1,33 @@
 <template>
-  <h1>statistics</h1>
-  <u>
-    <li repeat.for="stat of raffleType.statistics">
-      <b class="${stat.color}">${stat.index} => ${stat.count}</b>
-    </li>
-  </u>
+  <div class="card statsPage">
+    <div class="item item-divider">
+      <h2>Statistics for last ${raffleType.statistics.length} raffles</h2>
+    </div>
+    <div class="item item-text-wrap">
+      <div class="button-bar bar-positive">
+        <button
+          click.trigger="sortByIndexOrCount('index')"
+          class="button">
+            Sort by index
+        </button>
+        <button
+          click.trigger="sortByIndexOrCount('count')"
+          class="button">
+            Sort by count
+        </button>
+      </div>
+    </div>
+    <div class="item item-text-wrap">
+      <section class="stage statsPage__item"repeat.for="stat of raffleType.statistics">
+        <figure class="ball ball--${stat.color}">
+        </figure>
+        <span class="statsPage__item--combi">
+          ${stat.index}
+        </span>
+        <b class="statsPage__item--count">
+          ${addStringZero(stat.count)}
+        </b>
+      </section>
+    </div>
+  </div>
 </template>

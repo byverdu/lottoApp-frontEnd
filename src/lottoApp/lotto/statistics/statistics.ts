@@ -11,11 +11,31 @@ export default class Statistics {
     private lottoRouter: LottoRouter,
     private bindingEngine: BindingEngine
   ) {
-      this.raffleType = lottoRouter.raffleType;
       console.log(this.lottoRouter.raffleType, 'lottoRouter');
       this.subscriber = this.bindingEngine
         .propertyObserver(this.lottoRouter, 'raffleType')
         .subscribe(this.lottoRouterData.bind(this));
+  }
+
+  public deactivate(){
+    this.subscriber.dispose();
+  }
+
+  public sortByIndexOrCount(type) {
+    switch(type) {
+      case 'index':
+        return this.raffleType.statistics.sort(
+          (a,b) => a.index - b.index
+        );
+      case 'count':
+        return this.raffleType.statistics.sort(
+          (a,b) => b.count - a.count
+        );
+    }
+  }
+
+  public addStringZero(ball) {
+    return ball <= 9 ? `0${ball}` : ball;
   }
 
   private lottoRouterData(data: LottoModel) {

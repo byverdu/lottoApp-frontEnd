@@ -13,6 +13,15 @@
   &--active {
     background: radial-gradient(circle at 16px 16px,red,#4c4c4c);
   }
+  &--greenItem {
+    background: radial-gradient(circle at 16px 16px,green,#4c4c4c);
+  }
+  &--redItem {
+    background: radial-gradient(circle at 16px 16px,red,#4c4c4c);
+  }
+  &--orangeItem {
+    background: radial-gradient(circle at 16px 16px,orange,#4c4c4c);
+  }
 }
 .ball .shadow {
   position: absolute;

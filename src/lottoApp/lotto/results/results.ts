@@ -23,12 +23,8 @@ export default class Results {
         .subscribe(this.lottoRouterData.bind(this));
   }
 
-  private lottoRouterData(data: LottoModel) {
-    this.raffleType = data;
-    console.log(data, 'bindingEngine')
-    this.combinations = data.combinations;
-    this.totalCombinations = this.getStoredCombisLength(data.lottoID);
-    console.log(this.combinations, 'xxxxxxxxxxxxxxxxx')
+  public deactivate(){
+    this.subscriber.dispose();
   }
 
   public compareLastResultWithSaved() {
@@ -93,5 +89,13 @@ export default class Results {
         arr.push(`${i}`);
     }
     return arr;
+  }
+
+  private lottoRouterData(data: LottoModel) {
+    this.raffleType = data;
+    console.log(data, 'bindingEngine')
+    this.combinations = data.combinations;
+    this.totalCombinations = this.getStoredCombisLength(data.lottoID);
+    console.log(this.combinations, 'xxxxxxxxxxxxxxxxx')
   }
 }

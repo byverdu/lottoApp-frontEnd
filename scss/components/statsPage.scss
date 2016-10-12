@@ -1,0 +1,27 @@
+.statsPage {
+  &__item {
+    display: inline-block;
+    margin: 0 9px;
+    .stage {
+      margin: 0 auto;
+      height: 35px;
+    }
+    &--combi {
+      position: absolute;
+      top: 5px;
+      color: #fff;
+      left: 10px;
+      font-size: 15px;
+    }
+    &--count {
+      font-size: 11px;
+      position: absolute;
+      top: 27px;
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 0 8px;
+      background: #fff;
+      left: 3px;
+    }
+  }
+}

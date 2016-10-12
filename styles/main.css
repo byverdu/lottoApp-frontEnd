@@ -3,18 +3,6 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.green, .greenItem {
-  color: green;
-}
-
-.purple, .redItem {
-  color: purple;
-}
-
-.orangeItem {
-  color: orange;
-}
-
 .active {
   color: #23527c !important;
 }
@@ -132,6 +120,15 @@ input[type="checkbox"] {
 }
 .ball--active {
   background: radial-gradient(circle at 16px 16px, red, #4c4c4c);
+}
+.ball--greenItem {
+  background: radial-gradient(circle at 16px 16px, green, #4c4c4c);
+}
+.ball--redItem {
+  background: radial-gradient(circle at 16px 16px, red, #4c4c4c);
+}
+.ball--orangeItem {
+  background: radial-gradient(circle at 16px 16px, orange, #4c4c4c);
 }
 
 .ball .shadow {
@@ -273,4 +270,30 @@ input[type="checkbox"] {
   color: white;
   width: 20px;
   left: 9px;
+}
+
+.statsPage__item {
+  display: inline-block;
+  margin: 0 9px;
+}
+.statsPage__item .stage {
+  margin: 0 auto;
+  height: 35px;
+}
+.statsPage__item--combi {
+  position: absolute;
+  top: 5px;
+  color: #fff;
+  left: 10px;
+  font-size: 15px;
+}
+.statsPage__item--count {
+  font-size: 11px;
+  position: absolute;
+  top: 27px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 0 8px;
+  background: #fff;
+  left: 3px;
 }
