@@ -1,31 +1,42 @@
 <template>
-  <h4>Prices for ${winnersData.date}</h4>
-  <ul class="list">
-    <li class="item" repeat.for="extras of winnersData.extraInfo">
-      ${extras}
-    </li>
-  </ul>
-  <table>
-    <thead>
-      <th repeat.for="heading of tableData">
-        ${heading}
-      </th>
-    </thead>
-    <tbody>
-      <tr repeat.for="winners of winnersData.allWinners">
-        <th>
-          ${winners.category}
-        </th>
-        <th>
-          ${winners.winners}
-        </th>
-        <th if.bind="winners.spanish">
-          ${winners.spanish}
-        </th>
-        <th>
-          ${winners.price}
-        </th>
-      </tr>
-    </tbody>
-  </table>
+  <div class="card">
+    <div class="item item-divider">
+      <h4>Breakdown for ${winnersData.date}</h4>
+    </div>
+    <div class="item item-text-wrap">
+      <table>
+        <thead>
+          <th repeat.for="heading of tableData">
+            ${heading}
+          </th>
+        </thead>
+        <tbody>
+          <tr repeat.for="winners of winnersData.allWinners">
+            <th>
+              ${winners.category}
+            </th>
+            <th>
+              ${winners.winners}
+            </th>
+            <th if.bind="winners.spanish">
+              ${winners.spanish}
+            </th>
+            <th>
+              ${winners.price}
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div repeat.for="extra of winnersData.extraInfo">
+      <div if.bind="$even" class="item item-divider">
+        <h2>${extra}</h2>
+      </div>
+      <div if.bind="$odd" class="item item-text-wrap">
+        <p>${extra}</p>
+      </div>
+    </div>
+  </div>
 </template>
