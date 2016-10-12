@@ -27,34 +27,9 @@ export default class FetchApi {
       .then( response => response.json());
   }
 
-  public chooseFetchMethod( params: string ): Promise<FetchInterface> {
-    switch( params ) {
-      case 'primitiva':
-        return this.getPrimitiva();
-      case 'bonoloto':
-        return this.getBonoloto();
-      case 'euromillions':
-        return this.getEuromillions();
-      default:
-        return;
-    }
-  }
-
-  private getPrimitiva(): Promise<FetchInterface> {
+  public getLottoDocById(lottoID: string): Promise<FetchInterface> {
     const rq = this.httpHeader;
-    return this.http.fetch( 'primitiva', rq )
-      .then( response => response.json());
-  }
-
-  private getBonoloto(): Promise<FetchInterface> {
-    const rq = this.httpHeader;
-    return this.http.fetch( 'bonoloto', rq )
-      .then( response => response.json());
-  }
-
-  private getEuromillions(): Promise<FetchInterface> {
-    const rq = this.httpHeader;
-    return this.http.fetch( 'euromillions', rq )
+    return this.http.fetch( lottoID, rq )
       .then( response => response.json());
   }
 }

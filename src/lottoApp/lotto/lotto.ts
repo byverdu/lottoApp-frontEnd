@@ -74,7 +74,7 @@ export default class LottoRouter {
     const lottoID: string = params.lottoID;
     const lottoAppName: string = this.appRouter.title.concat(` - ${lottoID}`);
     this.appRouter.title = lottoAppName;
-    this.fetchApi.chooseFetchMethod( lottoID )
+    this.fetchApi.getLottoDocById( lottoID )
       .then( response => {
         const data = response[ lottoID ]
         this.raffleType = data;
