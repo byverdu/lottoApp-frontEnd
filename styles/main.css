@@ -25,6 +25,18 @@ body {
   width: 82%;
   z-index: 5;
 }
+.fixed .icon {
+  position: relative;
+  top: -7px;
+}
+.fixed .tabs-title {
+  position: relative;
+  top: -17px;
+}
+.fixed a:hover,
+.fixed a:focus {
+  text-decoration: none;
+}
 
 .fixed-top {
   position: fixed !important;
@@ -107,6 +119,86 @@ input[type="checkbox"] {
   margin-bottom: 50px;
 }
 
+.ball {
+  display: block;
+  background: black;
+  margin: 0;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+}
+.ball--unactive {
+  background: radial-gradient(circle at 16px 16px, #5cabff, #4c4c4c);
+}
+.ball--active {
+  background: radial-gradient(circle at 16px 16px, red, #4c4c4c);
+}
+
+.ball .shadow {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, transparent 50%);
+  transform: rotateX(80deg) translateZ(-18px);
+  z-index: -1;
+}
+
+.stage {
+  width: 36px;
+  height: 50px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.cardToggle {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.cardToggle__text {
+  position: relative;
+  top: -5px;
+  right: 10px;
+}
+.cardToggle .toggle .handle {
+  width: 18px;
+  height: 19px;
+  top: 8px;
+  left: 5px;
+}
+.cardToggle .toggle .track {
+  width: 40px;
+  height: 25px;
+}
+.cardToggle__list {
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+}
+.cardToggle__item {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+}
+.cardToggle__item:last-child {
+  margin-left: 0;
+}
+.cardToggle__cardBalls--combi {
+  position: absolute;
+  top: 7px;
+  color: white;
+  width: 20px;
+  left: 9px;
+}
+.cardToggle__cardBalls .stage {
+  height: 35px;
+}
+
 .homePage {
   transform: translateY(50%);
 }
@@ -114,26 +206,6 @@ input[type="checkbox"] {
   margin: 45px 0;
 }
 
-.homeLottoPage__mostRepeated {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-.homeLottoPage__mostRepeated--text {
-  position: relative;
-  top: -5px;
-  right: 10px;
-}
-.homeLottoPage__mostRepeated .toggle .handle {
-  width: 18px;
-  height: 19px;
-  top: 8px;
-  left: 5px;
-}
-.homeLottoPage__mostRepeated .toggle .track {
-  width: 40px;
-  height: 25px;
-}
 .homeLottoPage__list {
   list-style: none;
   display: -ms-flexbox;
@@ -162,46 +234,16 @@ input[type="checkbox"] {
   font-size: 16px;
   position: relative;
   top: 6px;
-  left: 12px;
-}
-.homeLottoPage__ball {
-  display: block;
-  background: black;
-  margin: 0;
-  border-radius: 50%;
-  height: 35px;
-  width: 35px;
-}
-.homeLottoPage__ball--unactive {
-  background: radial-gradient(circle at 16px 16px, #5cabff, #4c4c4c);
-}
-.homeLottoPage__ball--active {
-  background: radial-gradient(circle at 16px 16px, red, #4c4c4c);
-}
-.homeLottoPage__ball .homeLottoPage__shadow {
-  position: absolute;
-  left: -4px;
-  top: -4px;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, transparent 50%);
-  transform: rotateX(80deg) translateZ(-18px);
-  z-index: -1;
-}
-.homeLottoPage__stage {
-  width: 36px;
-  height: 50px;
-  perspective: 1200px;
-  perspective-origin: 50% 50%;
+  left: 9px;
 }
 .homeLottoPage__cardBalls--combi {
   position: absolute;
   top: 7px;
   color: white;
   width: 20px;
-  left: 10px;
+  left: 9px;
 }
-.homeLottoPage__cardBalls .homeLottoPage__stage {
+.homeLottoPage__cardBalls .stage {
   height: 35px;
 }
 .homeLottoPage .item .badge {
@@ -212,4 +254,23 @@ input[type="checkbox"] {
 }
 .homeLottoPage .button-bar {
   padding: 10px;
+}
+
+.resultsPage__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+}
+.resultsPage__item .stage {
+  margin: 0 auto;
+  height: 35px;
+}
+.resultsPage__item--combi {
+  position: absolute;
+  top: 7px;
+  color: white;
+  width: 20px;
+  left: 9px;
 }

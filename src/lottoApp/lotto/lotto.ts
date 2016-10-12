@@ -1,4 +1,4 @@
-import { Router, RouterConfiguration, NavigationInstruction, activationStrategy } from 'aurelia-router';
+import { Router, RouterConfiguration, activationStrategy } from 'aurelia-router';
 import { autoinject } from 'aurelia-framework';
 import FetchApi from '../../services/fetchApi';
 import LottoUtils from '../../services/lottoUtils';
@@ -21,7 +21,7 @@ export default class LottoRouter {
     config.map([
       {
         route: '',
-        title: 'home',
+        title: 'Home',
         moduleId: './home/home',
         settings: {
           icon: 'ion-ios-home'
@@ -69,8 +69,8 @@ export default class LottoRouter {
     })
   }
 
-  public activate(params, routeConfig: RouterConfiguration, instruction: NavigationInstruction) {
-    console.log(params,routeConfig, instruction, this.appRouter, 'activate lotto')
+  public activate(params) {
+    console.log(params, this.appRouter, 'activate lotto')
     const lottoID: string = params.lottoID;
     const lottoAppName: string = this.appRouter.title.concat(` - ${lottoID}`);
     this.appRouter.title = lottoAppName;

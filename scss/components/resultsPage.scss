@@ -1,0 +1,18 @@
+.resultsPage {
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    .stage {
+      margin: 0 auto;
+      height: 35px;
+    }
+    &--combi {
+      position: absolute;
+      top: 7px;
+      color: white;
+      width: 20px;
+      left: 9px;
+    }
+  }
+}

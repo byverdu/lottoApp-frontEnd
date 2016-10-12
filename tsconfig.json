@@ -42,7 +42,7 @@
     "./src/lottoApp/lotto/statistics/statistics.ts",
     "./src/lottoApp/lotto/winners/winners.ts",
     "./src/lottoApp/lottoApp.ts",
-    "./src/lottoApp/partials/most-repeated-card.ts",
+    "./src/lottoApp/partials/card-toggle.ts",
     "./src/lottoApp/partials/tooltipAttr.ts",
     "./src/main.ts",
     "./src/models/BallModel.ts",

@@ -1,4 +1,22 @@
-.homeLottoPage {
+.cardToggle {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  &__text {
+    position: relative;
+    top: -5px;
+    right: 10px;
+  }
+  .toggle .handle {
+    width: 18px;
+    height: 19px;
+    top: 8px;
+    left: 5px;
+  }
+  .toggle .track {
+    width: 40px;
+    height: 25px;
+  }
   &__list {
     list-style: none;
     display: flex;
@@ -14,22 +32,6 @@
     &:last-child {
       margin-left: 0;
     }
-
-    &--label {
-      position: absolute;
-      color: white;
-      top: 0;
-      left: 0;
-      width: 45px;
-      height: 45px;
-    }
-
-    &--number {
-      font-size: 16px;
-      position: relative;
-      top: 6px;
-      left: 9px;
-    }
   }
   &__cardBalls {
     &--combi {
@@ -42,17 +44,5 @@
     .stage {
       height: 35px;
     }
-  }
-
-  // overwriting ionic
-  .item .badge {
-    right: 10px;
-  }
-  .item-note {
-    margin-right: 30px
-  }
-
-  .button-bar {
-    padding: 10px;
   }
 }

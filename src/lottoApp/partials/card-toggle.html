@@ -1,0 +1,31 @@
+<template>
+  <div class="card">
+    <div class="item item-divider">
+      <h3>${title}</h3>
+      <span class="cardToggle">
+        <span class="cardToggle__text">${showHideString}</span>
+        <label class="toggle toggle-positive">
+          <input
+            checked.bind="toggleCard"
+            type="checkbox"
+            change.delegate="isToggleCard(toggleCard)"
+          >
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </span>
+    </div>
+    <div class="item ${toggleCard ? 'isExpanded' : 'isCollapsed'}">
+      <ul class="cardToggle__list cardToggle__cardBalls">
+        <li class="cardToggle__item" repeat.for="combi of cardBalls">
+          <section class="stage">
+            <figure class="ball ball--unactive">
+            </figure>
+          </section>
+          <span class="cardToggle__cardBalls--combi">${addStringZero(combi)}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>

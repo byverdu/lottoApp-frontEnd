@@ -1,14 +1,43 @@
 <template>
-  <h1>results page</h1>
-  <div class="combinations" repeat.for="combis of combinations">
-    <span repeat.for="number of combis"><b class="number ${number.isMatched ? 'green' : 'purple'}">${number.value}-</b></span>
+  <require from="../../partials/tooltipAttr"></require>
+  <require from="../../partials/card-toggle"></require>
+  <div class="resultsPage">
+    <card-toggle
+      card-balls.bind="raffleType.lastResultNumbers"
+      title="Last Result">
+    </card-toggle>
+    <div class="button-bar bar-positive">
+      <button
+        class="button"
+        tooltip
+        data-original-title="Compare your saved raffles"
+        click.trigger="compareLastResultWithSaved()">
+          Check Raffles
+      </button>
+      <button
+        tooltip
+        data-original-title="Clear selected"
+        class="button"
+        click.trigger="clearCompared()">
+          Clear
+      </button>
+    </div>
+    <ul class="list">
+        <li class="item item-divider">
+          Showing ${indexRowMatch.length > 0 ? indexRowMatch.length : combinations.length} of <span textcontent.two-way="totalCombinations"></span>
+        </li>
+        <li class="resultsPage__item item" repeat.for="combis of combinations" id="${'id_'+$index}">
+          <section class="stage" repeat.for="number of combis">
+            <figure class="ball ball${number.isChecked ? '--active' : '--unactive'}">
+            </figure>
+            <span class="resultsPage__item--combi">${addStringZero(number.value)}</span>
+          </section>
+          <button
+            class="button button-assertive button-small"
+            click.trigger="deleteCombiFromStore($index)">
+            Delete
+          </button>
+        </li>
+    </ul>
   </div>
-  <ul>
-    <li>
-      last results
-    </li>
-    <li repeat.for="result of raffleType.lastResultNumbers">${result}</li>
-  </ul>
-  <button click.trigger="compareLastResultWithSaved(isMatched)" type="button">Check Raffles</button>
-  <button click.trigger="clearCompared()" type="button">Clear</button>
 </template>

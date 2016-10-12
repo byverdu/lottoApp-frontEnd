@@ -11,8 +11,6 @@ export default class WindowStorage implements WindowStoreInterface {
     if ( this.localStorageSupported ) {
       if ( this.getWindowStorage(name) !== null ) {
         const oldValue = this.getWindowStorage(name);
-        // console.log(oldValue, item, 'oldValue')
-        // const result = oldValue.concat(item)
         oldValue.push(item);
 
         return this.windowStorage.setItem( name, JSON.stringify( oldValue ));
@@ -27,5 +25,11 @@ export default class WindowStorage implements WindowStoreInterface {
       }
       return [...JSON.parse( this.windowStorage.getItem( name ))];
     }
+  }
+
+  public removeItemWindowStorage(name: string, position: number) {
+    const tempStore = this.getWindowStorage(name);
+    tempStore.splice(position, 1);
+    return this.windowStorage.setItem( name, JSON.stringify(tempStore));
   }
 }

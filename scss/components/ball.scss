@@ -1,0 +1,32 @@
+.ball {
+  display: block;
+  background: black;
+  margin: 0;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+
+  &--unactive {
+    background: radial-gradient(circle at 16px 16px,#5cabff,#4c4c4c);
+  }
+
+  &--active {
+    background: radial-gradient(circle at 16px 16px,red,#4c4c4c);
+  }
+}
+.ball .shadow {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+  transform: rotateX(80deg) translateZ(-18px);
+  z-index: -1;
+}
+.stage {
+  width: 36px;
+  height: 50px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
