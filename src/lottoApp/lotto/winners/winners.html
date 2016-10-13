@@ -4,7 +4,7 @@
       <h4>Breakdown for ${winnersData.date}</h4>
     </div>
     <div class="item item-text-wrap">
-      <table>
+      <table class="winnersTable">
         <thead>
           <th repeat.for="heading of tableData">
             ${heading}
@@ -12,18 +12,18 @@
         </thead>
         <tbody>
           <tr repeat.for="winners of winnersData.allWinners">
-            <th>
+            <td>
               ${winners.category}
-            </th>
-            <th>
+            </td>
+            <td>
               ${winners.winners}
-            </th>
-            <th if.bind="winners.spanish">
+            </td>
+            <td if.bind="winners.spanish">
               ${winners.spanish}
-            </th>
-            <th>
+            </td>
+            <td>
               ${winners.price}
-            </th>
+            </td>
           </tr>
         </tbody>
       </table>

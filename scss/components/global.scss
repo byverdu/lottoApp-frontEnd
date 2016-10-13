@@ -51,6 +51,25 @@ input[type="checkbox"] {
   -webkit-animation-fill-mode: forwards;
 }
 
+.winnersTable {
+  margin: 0 auto;
+  font-size: 13px;
+  th,
+  td {
+    text-align: center;
+    padding: 3px;
+  }
+  th {
+    border-bottom:  1px solid #ccc;
+    border-top: 1px solid #ccc;
+  }
+  tbody tr {
+    &:nth-child(odd) {
+      background-color: #f5f5f5;
+    }
+  }
+}
+
 // Animations
 @keyframes collapse {
   0% {
